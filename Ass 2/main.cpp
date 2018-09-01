@@ -64,7 +64,11 @@ int prev_mouse_y = -1;
 
 // vehicle control related variables
 RCT::Rectangular_Prism * rectangle = NULL;
+RCT::Rectangular_Prism * rectangle2 = NULL;
 CYL::Cylinder *cylinder = NULL;
+CYL::Cylinder *cylinder2 = NULL;
+CYL::Cylinder *cylinder3 = NULL;
+CYL::Cylinder *cylinder4 = NULL;
 Vehicle * vehicle = NULL;
 double speed = 0;
 double steering = 0;
@@ -112,10 +116,18 @@ int main(int argc, char ** argv) {
 	// -------------------------------------------------------------------------
 
 	//vehicle = new MyVehicle();
-	rectangle = new RCT::Rectangular_Prism(5,0,5, 10, 20, 50, 45);
-	rectangle->setColor(0, 1, 0);
-	cylinder = new CYL::Cylinder(0, 0, 0, 10, 50);
-
+	rectangle = new RCT::Rectangular_Prism(0,3,-10, 17, 10, 40);
+	rectangle2 = new RCT::Rectangular_Prism(0, 13, -10, 17, 10, 20);
+	rectangle->setColor(0.75, 0, 0);
+	rectangle2->setColor(0.75, 0, 0);
+	cylinder = new CYL::Cylinder(0, 0, 0, 3, 5, 20, 90);
+	cylinder2 = new CYL::Cylinder(0, 2, 0, 0, 3, 18.5, 90);
+	cylinder3 = new CYL::Cylinder(20, 0, 0, 3, 5, 20, 90);
+	cylinder4 = new CYL::Cylinder(20, 2, 0, 0, 3, 18.5, 90);
+	cylinder->setColor(0.05, 0.05, 0.05);
+	cylinder2->setColor(0.75, 0.75, 0.75);
+	cylinder3->setColor(0.05, 0.05, 0.05);
+	cylinder4->setColor(0.75, 0.75, 0.75);
 
 
 	// add test obstacles
@@ -230,8 +242,12 @@ void display() {
 	// draw HUD
 	HUD::Draw();
 	rectangle->draw();
+	rectangle2->draw();
 	//testing();
 	cylinder->draw();
+	cylinder2->draw();
+	cylinder3->draw();
+	cylinder4->draw();
 	glutSwapBuffers();
 };
 
