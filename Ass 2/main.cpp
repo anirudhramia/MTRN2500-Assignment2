@@ -158,10 +158,22 @@ void drawGoals()
 
 void testing() {
 
-	GLUquadricObj *disk;
+	GLUquadricObj *quadric; // Create pointer for storage space for object
 
-	disk = gluNewQuadric();
-	gluDisk(disk, 20, 20, 20, 5);
+						   //example
+	GLUquadricObj *Cylinder; // Create pointer for our cylinder
+
+	Cylinder = gluNewQuadric(); // Create our new quadric object
+	gluQuadricDrawStyle(Cylinder, GLU_FILL); //FILL also can be line(wire)
+	gluQuadricNormals(Cylinder, GLU_SMOOTH); // For if lighting is to be used.
+	gluQuadricOrientation(Cylinder, GLU_OUTSIDE);
+	gluQuadricTexture(Cylinder, GL_TRUE);// if you want to map a texture to it.
+
+										 // Draw 
+	//gluCylinder(Cylinder, bottom, top, length, slices_vertical, slices_horisontal);
+
+	// example of disk
+	gluDisk(Cylinder, 20, 20, 20, 20);
 }
 
 void display() {
@@ -206,8 +218,8 @@ void display() {
 
 	// draw HUD
 	HUD::Draw();
-	//testing();
-	rectangle->draw();
+	testing();
+	//rectangle->draw();
 	glutSwapBuffers();
 };
 
