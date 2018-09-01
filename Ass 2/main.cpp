@@ -159,7 +159,7 @@ void drawGoals()
 void testing() {
 
 	GLUquadricObj *disk;
-
+//hello
 	disk = gluNewQuadric();
 	gluDisk(disk, 20, 20, 20, 5);
 }
