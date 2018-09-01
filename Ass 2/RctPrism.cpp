@@ -1,5 +1,4 @@
 #include "RctPrism.h"
-#include "RctPrism.h"
 #include "Shape.hpp"
 
 #ifdef __APPLE__
@@ -105,7 +104,10 @@ void RCT::Rectangular_Prism::updateVerticies() {
 }
 
 void RCT::Rectangular_Prism::draw() {
+
 	glPushMatrix();
+	glPushAttrib(GL_CURRENT_BIT);
+	this->setColorInGL();
 	glRotatef(this->rotation, 0, 1, 0);
 	//glVertex3f(vertices[0][0], vertices[0][1], vertices[0][2]); //0
 	//glVertex3f(vertices[1][0], vertices[1][1], vertices[1][2]); //1
@@ -158,4 +160,5 @@ void RCT::Rectangular_Prism::draw() {
 	glVertex3f(vertices[5][0], vertices[5][1], vertices[5][2]);
 	glEnd();
 	glPopMatrix();
+	glPopAttrib();
 }
