@@ -206,8 +206,8 @@ void display() {
 
 	// draw HUD
 	HUD::Draw();
-	testing();
-	//rectangle->draw();
+	//testing();
+	rectangle->draw();
 	glutSwapBuffers();
 };
 
