@@ -10,9 +10,9 @@ namespace RCT {
 		double y_l;
 		double z_l;
 		//array of vertex points
-		double verticies[8][3] = { 0 };
+		double vertices[8][3] = { 0 };
 		//updates the vertex points
-		void updateVerticies();
+		void updateVertices();
 	public:
 		//Constructors for: no dimensions given, dimensions given, dimensions and rotation given
 		Rectangular_Prism();
