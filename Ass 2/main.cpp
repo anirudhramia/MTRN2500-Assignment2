@@ -163,17 +163,26 @@ void testing() {
 						   //example
 	GLUquadricObj *Cylinder; // Create pointer for our cylinder
 
+
+	quadric = gluNewQuadric();
 	Cylinder = gluNewQuadric(); // Create our new quadric object
 	gluQuadricDrawStyle(Cylinder, GLU_FILL); //FILL also can be line(wire)
 	gluQuadricNormals(Cylinder, GLU_SMOOTH); // For if lighting is to be used.
 	gluQuadricOrientation(Cylinder, GLU_OUTSIDE);
 	gluQuadricTexture(Cylinder, GL_TRUE);// if you want to map a texture to it.
 
-										 // Draw 
-	//gluCylinder(Cylinder, bottom, top, length, slices_vertical, slices_horisontal);
+	// Draw 
+	gluCylinder(Cylinder, 10, 10, 50, 25, 1);
 
 	// example of disk
-	gluDisk(Cylinder, 20, 20, 20, 20);
+	glColor3f(0.25, 0.25, 0.67);
+	gluDisk(quadric, 0, 10, 25, 1);
+	glPushMatrix();
+	glTranslatef(0, 0, 50);
+	GLUquadricObj *disk2;
+	disk2 = gluNewQuadric();
+	gluDisk(disk2, 0, 10, 25, 1);
+	glPopMatrix();
 }
 
 void display() {
