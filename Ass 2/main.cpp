@@ -34,6 +34,7 @@
 #include "Shape.hpp"
 #include "Vehicle.hpp"
 #include "RctPrism.h"
+#include "Cylinder.h"
 
 #include "RemoteDataManager.hpp"
 #include "Messages.hpp"
@@ -63,6 +64,7 @@ int prev_mouse_y = -1;
 
 // vehicle control related variables
 RCT::Rectangular_Prism * rectangle = NULL;
+CYL::Cylinder *cylinder = NULL;
 Vehicle * vehicle = NULL;
 double speed = 0;
 double steering = 0;
@@ -112,6 +114,8 @@ int main(int argc, char ** argv) {
 	//vehicle = new MyVehicle();
 	rectangle = new RCT::Rectangular_Prism(5,0,5, 10, 20, 50, 45);
 	rectangle->setColor(0, 1, 0);
+	cylinder = new CYL::Cylinder(0, 0, 0, 10, 50);
+
 
 
 	// add test obstacles
@@ -167,10 +171,6 @@ void testing() {
 
 	quadric = gluNewQuadric();
 	Cylinder = gluNewQuadric(); // Create our new quadric object
-	gluQuadricDrawStyle(Cylinder, GLU_FILL); //FILL also can be line(wire)
-	gluQuadricNormals(Cylinder, GLU_SMOOTH); // For if lighting is to be used.
-	gluQuadricOrientation(Cylinder, GLU_OUTSIDE);
-	gluQuadricTexture(Cylinder, GL_TRUE);// if you want to map a texture to it.
 
 	// Draw 
 	gluCylinder(Cylinder, 10, 10, 50, 25, 1);
@@ -230,8 +230,8 @@ void display() {
 	// draw HUD
 	HUD::Draw();
 	rectangle->draw();
-	testing();
-	
+	//testing();
+	cylinder->draw();
 	glutSwapBuffers();
 };
 

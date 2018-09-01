@@ -22,7 +22,6 @@ RCT::Rectangular_Prism::Rectangular_Prism():Shape() {
 	x_l = 0.0;
 	y_l = 0.0;
 	z_l = 0.0;
-	
 }
 
 //initalise the rectangular prism with given dimensions
