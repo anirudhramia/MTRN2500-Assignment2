@@ -18,10 +18,10 @@ namespace TRI {
 		Triangular_Prism(double _x, double _y, double _z, double length_x, double length_slant, double length_z, double _angle);
 		Triangular_Prism(double _x, double _y, double _z, double length_x, double length_slant, double length_z, double _angle, double _rotation);
 
-		void setXLength(double length_x);
-		void setSlantLength(double length_slant);
-		void setZLength(double length_z);
-		void setAngle(double _angle);
+		//void setXLength(double length_x);
+		//void setSlantLength(double length_slant);
+		//void setZLength(double length_z);
+		//void setAngle(double _angle);
 
 		void draw();
 

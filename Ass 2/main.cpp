@@ -116,7 +116,7 @@ int main(int argc, char ** argv) {
 	rectangle->setColor(0, 1, 0);
 	cylinder = new CYL::Cylinder(0, 0, 0, 10, 50);
 
-
+	triangle = new TRI::
 
 	// add test obstacles
 	ObstacleManager::get()->addObstacle(Obstacle(10,10, 1));
