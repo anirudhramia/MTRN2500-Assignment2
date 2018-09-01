@@ -128,6 +128,8 @@ void RCT::Rectangular_Prism::updateVertices() {
 //draws the shape
 void RCT::Rectangular_Prism::draw() {
 
+	updateVertices();
+
 	//saves the current orientation and perspective
 	glPushMatrix();
 	//saves the current attributes (specifically colour)

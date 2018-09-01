@@ -36,6 +36,7 @@
 #include "RctPrism.h"
 #include "Cylinder.h"
 #include "TriPrism.h"
+#include "TrapPrism.h"
 
 #include "RemoteDataManager.hpp"
 #include "Messages.hpp"
@@ -71,6 +72,8 @@ CYL::Cylinder * cylinder2 = NULL;
 CYL::Cylinder * cylinder3 = NULL;
 CYL::Cylinder * cylinder4 = NULL;
 TRI::Triangular_Prism * triangle = NULL;
+TPZ::Trapezoidal_Prism * trapezium = NULL;
+TRI::Triangular_Prism * triangle2 = NULL;
 Vehicle * vehicle = NULL;
 double speed = 0;
 double steering = 0;
@@ -118,8 +121,8 @@ int main(int argc, char ** argv) {
 	// -------------------------------------------------------------------------
 
 	//vehicle = new MyVehicle();
-	rectangle = new RCT::Rectangular_Prism(0,3,-10, 17, 10, 40);
-	rectangle2 = new RCT::Rectangular_Prism(0, 13, -10, 17, 10, 20);
+	rectangle = new RCT::Rectangular_Prism(0, 3, -10, 17, 10, 40);
+	rectangle2 = new RCT::Rectangular_Prism(0, 13, -10, 17, 10, 10);
 	rectangle->setColor(0.75, 0, 0);
 	rectangle2->setColor(0.75, 0, 0);
 	cylinder = new CYL::Cylinder(0, 0, 0, 3, 5, 20, 90);
@@ -131,7 +134,14 @@ int main(int argc, char ** argv) {
 	cylinder3->setColor(0.05, 0.05, 0.05);
 	cylinder4->setColor(0.75, 0.75, 0.75);
 
-	triangle = new TRI::Triangular_Prism(-1, -2, -1, 5, 6, 10, 60, 90);
+	triangle = new TRI::Triangular_Prism(17, 30, 0, 5, 6, 10, 10, 90);
+	triangle->setColor(0.05, 0.34, 0.05);
+	triangle2 = new TRI::Triangular_Prism(0, 13, 10, 5, 6, 10, 60, -90);
+
+	trapezium = new TPZ::Trapezoidal_Prism(0, 0, 0, 50, 10, 20, 3, 5,90);
+	
+	
+
 
 	// add test obstacles
 	ObstacleManager::get()->addObstacle(Obstacle(10,10, 1));
@@ -178,27 +188,16 @@ void drawGoals()
 
 void testing() {
 
-	GLUquadricObj *quadric; // Create pointer for storage space for object
+	rectangle->draw();
+	rectangle2->draw();
 
-						   //example
-	GLUquadricObj *Cylinder; // Create pointer for our cylinder
-
-
-	quadric = gluNewQuadric();
-	Cylinder = gluNewQuadric(); // Create our new quadric object
-
-	// Draw 
-	gluCylinder(Cylinder, 10, 10, 50, 25, 1);
-
-	// example of disk
-	glColor3f(0.25, 0.25, 0.67);
-	gluDisk(quadric, 0, 10, 25, 1);
-	glPushMatrix();
-	glTranslatef(0, 0, 50);
-	GLUquadricObj *disk2;
-	disk2 = gluNewQuadric();
-	gluDisk(disk2, 0, 10, 25, 1);
-	glPopMatrix();
+	cylinder->draw();
+	cylinder2->draw();
+	cylinder3->draw();
+	cylinder4->draw();
+	triangle->draw();
+	//triangle2->draw();
+	//trapezium->draw();
 
 }
 
@@ -244,14 +243,9 @@ void display() {
 
 	// draw HUD
 	HUD::Draw();
-	//rectangle->draw();
-	//rectangle2->draw();
-	////testing();
-	//cylinder->draw();
-	//cylinder2->draw();
-	//cylinder3->draw();
-	//cylinder4->draw();
-	triangle->draw();
+
+	testing();
+
 	glutSwapBuffers();
 };
 

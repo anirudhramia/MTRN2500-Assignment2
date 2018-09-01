@@ -100,6 +100,9 @@ void TRI::Triangular_Prism::updateVertices(){
 
 
 void TRI::Triangular_Prism::draw(){
+
+	updateVertices();
+
 	//saves the current orientation and perspective
 	glPushMatrix();
 	//saves the current attributes (specifically colour)
