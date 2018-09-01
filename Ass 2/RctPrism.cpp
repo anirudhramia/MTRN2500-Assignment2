@@ -105,8 +105,8 @@ void RCT::Rectangular_Prism::updateVerticies() {
 }
 
 void RCT::Rectangular_Prism::draw() {
-
-	
+	glPushMatrix();
+	glRotatef(this->rotation, 0, 1, 0);
 	//glVertex3f(vertices[0][0], vertices[0][1], vertices[0][2]); //0
 	//glVertex3f(vertices[1][0], vertices[1][1], vertices[1][2]); //1
 	//glVertex3f(vertices[2][0], vertices[2][1], vertices[2][2]); //2
@@ -157,5 +157,5 @@ void RCT::Rectangular_Prism::draw() {
 	glVertex3f(vertices[6][0], vertices[6][1], vertices[6][2]);
 	glVertex3f(vertices[5][0], vertices[5][1], vertices[5][2]);
 	glEnd();
-
+	glPopMatrix();
 }

@@ -91,12 +91,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Andrew Fleming\Desktop\Current Sem of Uni\MTRN 2500\Ass 2\include;E:\University Stuff\GitHub\MTRN2500A-A\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Andrew Fleming\Desktop\Current Sem of Uni\MTRN 2500\MTRN2500-Assignment2\include;E:\University Stuff\GitHub\MTRN2500A-A\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\University Stuff\GitHub\MTRN2500A-A\lib;C:\Users\Andrew Fleming\Desktop\Current Sem of Uni\MTRN 2500\Ass 2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:\University Stuff\GitHub\MTRN2500A-A\lib;C:\Users\Andrew Fleming\Desktop\Current Sem of Uni\MTRN 2500\MTRN2500-Assignment2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glu32.lib;glut32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

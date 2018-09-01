@@ -110,7 +110,7 @@ int main(int argc, char ** argv) {
 	// -------------------------------------------------------------------------
 
 	//vehicle = new MyVehicle();
-	rectangle = new RCT::Rectangular_Prism(5,0,5, 10, 20, 50);
+	rectangle = new RCT::Rectangular_Prism(5,0,5, 10, 20, 50, 45);
 
 
 	// add test obstacles
@@ -207,7 +207,7 @@ void display() {
 	// draw HUD
 	HUD::Draw();
 	testing();
-	//rectangle->draw();
+	rectangle->draw();
 	glutSwapBuffers();
 };
 
