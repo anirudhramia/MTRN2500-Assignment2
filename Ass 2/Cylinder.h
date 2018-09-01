@@ -6,15 +6,15 @@ namespace CYL {
 	class Cylinder : public Shape {
 
 	protected:
-		double _radius;
-		double _radius;
+		double radius;
+		double depth;
 
-		void updateVerticies();
+		//void updateVerticies();
 
 	public:
 		Cylinder();
-		Cylinder(double _radius, double _depth);
-		Cylinder(double _radius, double _depth, double _rotation);
+		Cylinder(double _x, double _y, double _z, double radius, double depth);
+		Cylinder(double _x, double _y, double _z, double radius, double depth, double _rotation);
 
 
 		/*void setXLength(double length_x);
