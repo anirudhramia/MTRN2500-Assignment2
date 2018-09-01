@@ -35,6 +35,7 @@
 #include "Vehicle.hpp"
 #include "RctPrism.h"
 #include "Cylinder.h"
+#include "TriPrism.h"
 
 #include "RemoteDataManager.hpp"
 #include "Messages.hpp"
@@ -65,10 +66,11 @@ int prev_mouse_y = -1;
 // vehicle control related variables
 RCT::Rectangular_Prism * rectangle = NULL;
 RCT::Rectangular_Prism * rectangle2 = NULL;
-CYL::Cylinder *cylinder = NULL;
-CYL::Cylinder *cylinder2 = NULL;
-CYL::Cylinder *cylinder3 = NULL;
-CYL::Cylinder *cylinder4 = NULL;
+CYL::Cylinder * cylinder = NULL;
+CYL::Cylinder * cylinder2 = NULL;
+CYL::Cylinder * cylinder3 = NULL;
+CYL::Cylinder * cylinder4 = NULL;
+TRI::Triangular_Prism * triangle = NULL;
 Vehicle * vehicle = NULL;
 double speed = 0;
 double steering = 0;
@@ -129,6 +131,7 @@ int main(int argc, char ** argv) {
 	cylinder3->setColor(0.05, 0.05, 0.05);
 	cylinder4->setColor(0.75, 0.75, 0.75);
 
+	triangle = new TRI::Triangular_Prism(-1, -2, -1, 5, 6, 10, 60, 90);
 
 	// add test obstacles
 	ObstacleManager::get()->addObstacle(Obstacle(10,10, 1));
@@ -241,13 +244,14 @@ void display() {
 
 	// draw HUD
 	HUD::Draw();
-	rectangle->draw();
-	rectangle2->draw();
-	//testing();
-	cylinder->draw();
-	cylinder2->draw();
-	cylinder3->draw();
-	cylinder4->draw();
+	//rectangle->draw();
+	//rectangle2->draw();
+	////testing();
+	//cylinder->draw();
+	//cylinder2->draw();
+	//cylinder3->draw();
+	//cylinder4->draw();
+	triangle->draw();
 	glutSwapBuffers();
 };
 

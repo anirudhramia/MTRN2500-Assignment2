@@ -136,4 +136,9 @@ void TRI::Triangular_Prism::draw(){
 	glVertex3f(vertices[4][0], vertices[4][1], vertices[4][2]);
 	glEnd();
 
+	//restores the previous orientation and perspective
+	glPopMatrix();
+	//restores the previous attributes (specifically colour)
+	glPopAttrib();
+
 }
