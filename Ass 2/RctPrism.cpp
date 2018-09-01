@@ -29,7 +29,7 @@ RCT::Rectangular_Prism::Rectangular_Prism(double _x, double _y, double _z, doubl
 	x_l = length_x;
 	y_l = length_y;
 	z_l = length_z;
-	this->updateVerticies(); //update the location of the verticies
+	this->updateVertices(); //update the location of the vertices
 }
 
 //intialise the rectangular prism with given dimensions and rotation
@@ -37,7 +37,7 @@ RCT::Rectangular_Prism::Rectangular_Prism(double _x, double _y, double _z, doubl
 	x_l = length_x;
 	y_l = length_y;
 	z_l = length_z;
-	this->updateVerticies(); //update the location of the verticies
+	this->updateVertices(); //update the location of the vertices
 }
 
 //Setters for the x,y,z lengths
@@ -57,11 +57,11 @@ void RCT::Rectangular_Prism::setZLength(double length_z)
 }
 
 
-//maps the verticies array to store the locations of each vertex of the prism, as described below
-void RCT::Rectangular_Prism::updateVerticies() {
+//maps the vertices array to store the locations of each vertex of the prism, as described below
+void RCT::Rectangular_Prism::updateVertices() {
 	
 /*
-			This is the coordinates of the verticies on the rectangular prism
+			This is the coordinates of the vertices on the rectangular prism
 		    ^	 ^Z
 			| Y /
 			|  /
@@ -82,47 +82,47 @@ void RCT::Rectangular_Prism::updateVerticies() {
 
 
 /*	These are the coordinates of each vertex
-	verticies[0] = { x - (x_l / 2), y - (y_l / 2), z };
-	verticies[1] = { x + (x_l / 2), y - (y_l / 2), z };
-	verticies[2] = { x + (x_l / 2), y + (y_l / 2), z };
-	verticies[3] = { x - (x_l / 2), y + (y_l / 2), z };
-	verticies[4] = { x - (x_l / 2), y - (y_l / 2), z +z_l };
-	verticies[5] = { x + (x_l / 2), y - (y_l / 2), z + z_l };
-	verticies[6] = { x + (x_l / 2), y + (y_l / 2), z + z_l };
-	verticies[7] = { x - (x_l / 2), y + (y_l / 2), z + z_l };*/	
+	vertices[0] = { x - (x_l / 2), y - (y_l / 2), z };
+	vertices[1] = { x + (x_l / 2), y - (y_l / 2), z };
+	vertices[2] = { x + (x_l / 2), y + (y_l / 2), z };
+	vertices[3] = { x - (x_l / 2), y + (y_l / 2), z };
+	vertices[4] = { x - (x_l / 2), y - (y_l / 2), z +z_l };
+	vertices[5] = { x + (x_l / 2), y - (y_l / 2), z + z_l };
+	vertices[6] = { x + (x_l / 2), y + (y_l / 2), z + z_l };
+	vertices[7] = { x - (x_l / 2), y + (y_l / 2), z + z_l };*/	
 
 
-	verticies[0][0] = x - (x_l / 2);
-	verticies[0][1] = y;
-	verticies[0][2] = z - (z_l/2);
+	vertices[0][0] = x - (x_l / 2);
+	vertices[0][1] = y;
+	vertices[0][2] = z - (z_l/2);
 	
-	verticies[1][0] = x + (x_l / 2);
-	verticies[1][1] = y;
-	verticies[1][2] = z - (z_l / 2);
+	vertices[1][0] = x + (x_l / 2);
+	vertices[1][1] = y;
+	vertices[1][2] = z - (z_l / 2);
 	
-	verticies[2][0] = x + (x_l / 2);
-	verticies[2][1] = y;
-	verticies[2][2] = z + (z_l / 2);
+	vertices[2][0] = x + (x_l / 2);
+	vertices[2][1] = y;
+	vertices[2][2] = z + (z_l / 2);
 	
-	verticies[3][0] = x - (x_l / 2);
-	verticies[3][1] = y;
-	verticies[3][2] = z + (z_l / 2);
+	vertices[3][0] = x - (x_l / 2);
+	vertices[3][1] = y;
+	vertices[3][2] = z + (z_l / 2);
 	
-	verticies[4][0] = x - (x_l / 2);
-	verticies[4][1] = y + y_l;
-	verticies[4][2] = z - (z_l / 2);
+	vertices[4][0] = x - (x_l / 2);
+	vertices[4][1] = y + y_l;
+	vertices[4][2] = z - (z_l / 2);
 	
-	verticies[5][0] = x + (x_l / 2);
-	verticies[5][1] = y + y_l;
-	verticies[5][2] = z - (z_l / 2);
+	vertices[5][0] = x + (x_l / 2);
+	vertices[5][1] = y + y_l;
+	vertices[5][2] = z - (z_l / 2);
 	
-	verticies[6][0] = x + (x_l / 2);
-	verticies[6][1] = y + y_l;
-	verticies[6][2] = z + (z_l / 2);
+	vertices[6][0] = x + (x_l / 2);
+	vertices[6][1] = y + y_l;
+	vertices[6][2] = z + (z_l / 2);
 	
-	verticies[7][0] = x - (x_l / 2);
-	verticies[7][1] = y + y_l;
-	verticies[7][2] = z + (z_l / 2);
+	vertices[7][0] = x - (x_l / 2);
+	vertices[7][1] = y + y_l;
+	vertices[7][2] = z + (z_l / 2);
 }
 
 //draws the shape
@@ -140,44 +140,44 @@ void RCT::Rectangular_Prism::draw() {
 	
 	//draws each of the 6 quad faces of the prism
 	glBegin(GL_QUADS);
-	glVertex3f(verticies[0][0], verticies[0][1], verticies[0][2]); //Bottom
-	glVertex3f(verticies[1][0], verticies[1][1], verticies[1][2]);
-	glVertex3f(verticies[2][0], verticies[2][1], verticies[2][2]);
-	glVertex3f(verticies[3][0], verticies[3][1], verticies[3][2]);
+	glVertex3f(vertices[0][0], vertices[0][1], vertices[0][2]); //Bottom
+	glVertex3f(vertices[1][0], vertices[1][1], vertices[1][2]);
+	glVertex3f(vertices[2][0], vertices[2][1], vertices[2][2]);
+	glVertex3f(vertices[3][0], vertices[3][1], vertices[3][2]);
 	glEnd();
 
 	glBegin(GL_QUADS);
-	glVertex3f(verticies[4][0], verticies[4][1], verticies[4][2]); //Top
-	glVertex3f(verticies[5][0], verticies[5][1], verticies[5][2]); 
-	glVertex3f(verticies[6][0], verticies[6][1], verticies[6][2]); 
-	glVertex3f(verticies[7][0], verticies[7][1], verticies[7][2]);
+	glVertex3f(vertices[4][0], vertices[4][1], vertices[4][2]); //Top
+	glVertex3f(vertices[5][0], vertices[5][1], vertices[5][2]); 
+	glVertex3f(vertices[6][0], vertices[6][1], vertices[6][2]); 
+	glVertex3f(vertices[7][0], vertices[7][1], vertices[7][2]);
 	//glEnd();
 
-	glVertex3f(verticies[0][0], verticies[0][1], verticies[0][2]); //Front
-	glVertex3f(verticies[1][0], verticies[1][1], verticies[1][2]);
-	glVertex3f(verticies[5][0], verticies[5][1], verticies[5][2]);
-	glVertex3f(verticies[4][0], verticies[4][1], verticies[4][2]);
-	//glEnd();
-
-	//glBegin(GL_QUADS);
-	glVertex3f(verticies[3][0], verticies[3][1], verticies[3][2]); //Back
-	glVertex3f(verticies[2][0], verticies[2][1], verticies[2][2]);
-	glVertex3f(verticies[6][0], verticies[6][1], verticies[6][2]);
-	glVertex3f(verticies[7][0], verticies[7][1], verticies[7][2]);
+	glVertex3f(vertices[0][0], vertices[0][1], vertices[0][2]); //Front
+	glVertex3f(vertices[1][0], vertices[1][1], vertices[1][2]);
+	glVertex3f(vertices[5][0], vertices[5][1], vertices[5][2]);
+	glVertex3f(vertices[4][0], vertices[4][1], vertices[4][2]);
 	//glEnd();
 
 	//glBegin(GL_QUADS);
-	glVertex3f(verticies[0][0], verticies[0][1], verticies[0][2]); //right
-	glVertex3f(verticies[3][0], verticies[3][1], verticies[3][2]);
-	glVertex3f(verticies[7][0], verticies[7][1], verticies[7][2]);
-	glVertex3f(verticies[4][0], verticies[4][1], verticies[4][2]);
+	glVertex3f(vertices[3][0], vertices[3][1], vertices[3][2]); //Back
+	glVertex3f(vertices[2][0], vertices[2][1], vertices[2][2]);
+	glVertex3f(vertices[6][0], vertices[6][1], vertices[6][2]);
+	glVertex3f(vertices[7][0], vertices[7][1], vertices[7][2]);
 	//glEnd();
 
 	//glBegin(GL_QUADS);
-	glVertex3f(verticies[1][0], verticies[1][1], verticies[1][2]); //left
-	glVertex3f(verticies[2][0], verticies[2][1], verticies[2][2]);
-	glVertex3f(verticies[6][0], verticies[6][1], verticies[6][2]);
-	glVertex3f(verticies[5][0], verticies[5][1], verticies[5][2]);
+	glVertex3f(vertices[0][0], vertices[0][1], vertices[0][2]); //right
+	glVertex3f(vertices[3][0], vertices[3][1], vertices[3][2]);
+	glVertex3f(vertices[7][0], vertices[7][1], vertices[7][2]);
+	glVertex3f(vertices[4][0], vertices[4][1], vertices[4][2]);
+	//glEnd();
+
+	//glBegin(GL_QUADS);
+	glVertex3f(vertices[1][0], vertices[1][1], vertices[1][2]); //left
+	glVertex3f(vertices[2][0], vertices[2][1], vertices[2][2]);
+	glVertex3f(vertices[6][0], vertices[6][1], vertices[6][2]);
+	glVertex3f(vertices[5][0], vertices[5][1], vertices[5][2]);
 	glEnd();
 	//restores the previous orientation and perspective
 	glPopMatrix();
