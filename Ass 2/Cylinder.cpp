@@ -38,6 +38,17 @@ CYL::Cylinder::Cylinder(double _x, double _y, double _z, double _inner_radius, d
 	depth = _depth;
 }
 
+void CYL::Cylinder::setInnerRadius(double _inner_radius) {
+	this->inner_radius = _inner_radius;
+}
+
+void CYL::Cylinder::setOuterRadius(double _outer_radius) {
+	this->outer_radius = _outer_radius;
+}
+
+void CYL::Cylinder::setDepth(double _depth) {
+	this->depth = _depth;
+}
 
 void CYL::Cylinder::draw() {
 
