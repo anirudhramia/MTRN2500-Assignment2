@@ -92,7 +92,7 @@ void RCT::Rectangular_Prism::updateVertices() {
 	vertices[7] = { x - (x_l / 2), y + (y_l / 2), z + z_l };*/	
 
 
-	vertices[0][0] = x - (x_l / 2);
+	/*vertices[0][0] = x - (x_l / 2);
 	vertices[0][1] = y;
 	vertices[0][2] = z - (z_l/2);
 	
@@ -122,7 +122,39 @@ void RCT::Rectangular_Prism::updateVertices() {
 	
 	vertices[7][0] = x - (x_l / 2);
 	vertices[7][1] = y + y_l;
-	vertices[7][2] = z + (z_l / 2);
+	vertices[7][2] = z + (z_l / 2);*/
+
+	vertices[0][0] = - (x_l / 2);
+	vertices[0][1] = 0;
+	vertices[0][2] = - (z_l / 2);
+
+	vertices[1][0] = (x_l / 2);
+	vertices[1][1] = 0;
+	vertices[1][2] = - (z_l / 2);
+
+	vertices[2][0] = (x_l / 2);
+	vertices[2][1] = 0;
+	vertices[2][2] = (z_l / 2);
+
+	vertices[3][0] = - (x_l / 2);
+	vertices[3][1] = 0;
+	vertices[3][2] = (z_l / 2);
+
+	vertices[4][0] = - (x_l / 2);
+	vertices[4][1] = y_l;
+	vertices[4][2] = - (z_l / 2);
+
+	vertices[5][0] = (x_l / 2);
+	vertices[5][1] = y_l;
+	vertices[5][2] = - (z_l / 2);
+
+	vertices[6][0] = (x_l / 2);
+	vertices[6][1] = y_l;
+	vertices[6][2] = (z_l / 2);
+
+	vertices[7][0] = - (x_l / 2);
+	vertices[7][1] = y_l;
+	vertices[7][2] = (z_l / 2);
 }
 
 //draws the shape
@@ -137,8 +169,8 @@ void RCT::Rectangular_Prism::draw() {
 
 	//sets the colour and rotations as specified for the prism
 	this->setColorInGL();
-	glRotatef(this->rotation, 0, 1, 0);
-
+	//glRotatef(this->rotation, 0, 1, 0);
+	this->positionInGL();
 	
 	//draws each of the 6 quad faces of the prism
 	glBegin(GL_QUADS);
@@ -148,6 +180,7 @@ void RCT::Rectangular_Prism::draw() {
 	glVertex3f(vertices[3][0], vertices[3][1], vertices[3][2]);
 	glEnd();
 
+	
 	glBegin(GL_QUADS);
 	glVertex3f(vertices[4][0], vertices[4][1], vertices[4][2]); //Top
 	glVertex3f(vertices[5][0], vertices[5][1], vertices[5][2]); 
@@ -155,12 +188,13 @@ void RCT::Rectangular_Prism::draw() {
 	glVertex3f(vertices[7][0], vertices[7][1], vertices[7][2]);
 	//glEnd();
 
+	
 	glVertex3f(vertices[0][0], vertices[0][1], vertices[0][2]); //Front
 	glVertex3f(vertices[1][0], vertices[1][1], vertices[1][2]);
 	glVertex3f(vertices[5][0], vertices[5][1], vertices[5][2]);
 	glVertex3f(vertices[4][0], vertices[4][1], vertices[4][2]);
 	//glEnd();
-
+	
 	//glBegin(GL_QUADS);
 	glVertex3f(vertices[3][0], vertices[3][1], vertices[3][2]); //Back
 	glVertex3f(vertices[2][0], vertices[2][1], vertices[2][2]);

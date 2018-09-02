@@ -70,31 +70,31 @@ void TRI::Triangular_Prism::updateVertices(){
 
 */
 	
-	vertices[0][0] = x - (x_l / 2);
-	vertices[0][1] = y;
-	vertices[0][2] = z - (z_l / 2);
+	vertices[0][0] = - (x_l / 2);
+	vertices[0][1] = 0;
+	vertices[0][2] = - (z_l / 2);
 
-	vertices[1][0] = x + (x_l / 2);
-	vertices[1][1] = y;
-	vertices[1][2] = z - (z_l / 2);
+	vertices[1][0] = (x_l / 2);
+	vertices[1][1] = 0;
+	vertices[1][2] = - (z_l / 2);
 
-	vertices[2][0] = x + (x_l / 2);
-	vertices[2][1] = y;
-	vertices[2][2] = z + (z_l / 2);
+	vertices[2][0] = (x_l / 2);
+	vertices[2][1] = 0;
+	vertices[2][2] = (z_l / 2);
 
-	vertices[3][0] = x - (x_l / 2);
-	vertices[3][1] = y;
-	vertices[3][2] = z + (z_l / 2);
+	vertices[3][0] = - (x_l / 2);
+	vertices[3][1] = 0;
+	vertices[3][2] = (z_l / 2);
 
 	double rad_angle = PI / 180 * angle;
 
-	vertices[4][0] = x + (x_l / 2) - slant_l * cos(rad_angle);
+	vertices[4][0] = (x_l / 2) - slant_l * cos(rad_angle);
 	vertices[4][1] = slant_l * sin(rad_angle);
-	vertices[4][2] = z - (z_l / 2);
+	vertices[4][2] = - (z_l / 2);
 
-	vertices[5][0] = x + (x_l / 2) - slant_l * cos(rad_angle);
+	vertices[5][0] = (x_l / 2) - slant_l * cos(rad_angle);
 	vertices[5][1] = slant_l * sin(rad_angle);
-	vertices[5][2] = z + (z_l / 2);
+	vertices[5][2] = (z_l / 2);
 
 }
 
@@ -110,7 +110,8 @@ void TRI::Triangular_Prism::draw(){
 
 	//sets the colour and rotations as specified for the prism
 	this->setColorInGL();
-	glRotatef(this->rotation, 0, 1, 0);
+	//glRotatef(this->rotation, 0, 1, 0);
+	this->positionInGL();
 
 	glBegin(GL_TRIANGLES);
 	glVertex3f(vertices[0][0], vertices[0][1], vertices[0][2]);

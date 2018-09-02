@@ -64,37 +64,37 @@ void TPZ::Trapezoidal_Prism::updateVertices() {
 	 /				 \  /
 	1-----------------0
 */
-	vertices[0][0] = x - (x_l / 2);
-	vertices[0][1] = y;
-	vertices[0][2] = z - (z_l / 2);
+	vertices[0][0] = - (x_l / 2);
+	vertices[0][1] = 0;
+	vertices[0][2] = - (z_l / 2);
 
-	vertices[1][0] = x + (x_l / 2);
-	vertices[1][1] = y;
-	vertices[1][2] = z - (z_l / 2);
+	vertices[1][0] = (x_l / 2);
+	vertices[1][1] = 0;
+	vertices[1][2] = - (z_l / 2);
 
-	vertices[2][0] = x + (x_l / 2) - l_off;
-	vertices[2][1] = y + y_l;
-	vertices[2][2] = z - (z_l / 2);
+	vertices[2][0] = (x_l / 2) - l_off;
+	vertices[2][1] = y_l;
+	vertices[2][2] = - (z_l / 2);
 
-	vertices[3][0] = x - (x_l / 2) + r_off;
-	vertices[3][1] = y + y_l;
-	vertices[3][2] = z - (z_l / 2);
+	vertices[3][0] = - (x_l / 2) + r_off;
+	vertices[3][1] = y_l;
+	vertices[3][2] = - (z_l / 2);
 
-	vertices[4][0] = x - (x_l / 2);
-	vertices[4][1] = y;
-	vertices[4][2] = z + (z_l / 2);
+	vertices[4][0] = - (x_l / 2);
+	vertices[4][1] = 0;
+	vertices[4][2] = (z_l / 2);
 
-	vertices[5][0] = x + (x_l / 2);
-	vertices[5][1] = y;
-	vertices[5][2] = z + (z_l / 2);
+	vertices[5][0] = (x_l / 2);
+	vertices[5][1] = 0;
+	vertices[5][2] = (z_l / 2);
 
-	vertices[6][0] = x + (x_l / 2) - l_off;
-	vertices[6][1] = y + y_l;
-	vertices[6][2] = z + (z_l / 2);
+	vertices[6][0] = (x_l / 2) - l_off;
+	vertices[6][1] = y_l;
+	vertices[6][2] = (z_l / 2);
 
-	vertices[7][0] = x - (x_l / 2) + r_off;
-	vertices[7][1] = y + y_l;
-	vertices[7][2] = z + (z_l / 2);
+	vertices[7][0] = - (x_l / 2) + r_off;
+	vertices[7][1] = y_l;
+	vertices[7][2] = (z_l / 2);
 }
 
 
@@ -107,7 +107,8 @@ void TPZ::Trapezoidal_Prism::draw() {
 
 	//sets the colour and rotations as specified for the prism
 	this->setColorInGL();
-	glRotatef(this->rotation, 0, 1, 0);
+	//glRotatef(this->rotation, 0, 1, 0);
+	this->positionInGL();
 
 	glBegin(GL_QUADS);
 	glVertex3f(vertices[0][0], vertices[0][1], vertices[0][2]); //Bottom

@@ -67,30 +67,30 @@ void CYL::Cylinder::draw() {
 
 	this->setColorInGL();
 	glPushMatrix();
-
-	glRotatef(this->rotation, 0, 1, 0);
-	
+	 
+	//glRotatef(this->rotation, 0, 1, 0);
+	this->positionInGL();
 	// draw outer cylinder
 	glPushMatrix();
-	glTranslatef(x, y + outer_radius, z - (depth / 2));
+	glTranslatef(0, outer_radius, - (depth / 2));
 	gluCylinder(cylinder, outer_radius, outer_radius, depth, 25, 1);
 	glPopMatrix();
 
 	// draw inner cylinder
 	glPushMatrix();
-	glTranslatef(x, y + outer_radius, z - (depth / 2));
+	glTranslatef(0, outer_radius, - (depth / 2));
 	gluCylinder(cylinder, inner_radius, inner_radius, depth, 25, 1);
 	glPopMatrix();
 	
 	// draw disk1
 	glPushMatrix();
-	glTranslatef(x, y + outer_radius, z - (depth / 2));
+	glTranslatef(0, outer_radius, - (depth / 2));
 	gluDisk(disk1, inner_radius, outer_radius, 25, 1);
 	glPopMatrix();
 
 	// draw disk2
 	glPushMatrix();
-	glTranslatef(x, y + outer_radius, z + (depth / 2));
+	glTranslatef(0, outer_radius, (depth / 2));
 	gluDisk(disk2, inner_radius, outer_radius, 25, 1);
 	glPopMatrix();
 
