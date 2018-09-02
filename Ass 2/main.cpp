@@ -65,6 +65,7 @@ int prev_mouse_x = -1;
 int prev_mouse_y = -1;
 
 // vehicle control related variables
+/*
 RCT::Rectangular_Prism * rectangle = NULL;
 RCT::Rectangular_Prism * rectangle2 = NULL;
 CYL::Cylinder * cylinder = NULL;
@@ -73,7 +74,7 @@ CYL::Cylinder * cylinder3 = NULL;
 CYL::Cylinder * cylinder4 = NULL;
 TRI::Triangular_Prism * triangle = NULL;
 TPZ::Trapezoidal_Prism * trapezium = NULL;
-TRI::Triangular_Prism * triangle2 = NULL;
+TRI::Triangular_Prism * triangle2 = NULL;*/
 Vehicle * vehicle = NULL;
 double speed = 0;
 double steering = 0;
@@ -125,7 +126,7 @@ int main(int argc, char ** argv) {
 	// -------------------------------------------------------------------------
 
 	vehicle = new Vehicle();
-
+	/*
 	double x_test = 1.0;
 	double y_test = 0.0;
 	double z_test = 5.0;
@@ -148,7 +149,7 @@ int main(int argc, char ** argv) {
 	//triangle2 = new TRI::Triangular_Prism(0, 13, 10, 5, 6, 10, 60, -90);
 
 	trapezium = new TPZ::Trapezoidal_Prism(x_test+1, y_test+1, z_test, 0.5, 0.3, 0.5, 0.1, 0.01,90);
-	trapezium->setColor(0.5, 0.5, 0.5);
+	trapezium->setColor(0.5, 0.5, 0.5);*/
 	
 
 
@@ -197,7 +198,7 @@ void drawGoals()
 
 void testing() {
 	
-	if (i > 30) {
+	/*if (i > 30) {
 		j = -1;
 	}
 		
@@ -222,7 +223,7 @@ void testing() {
 	//triangle2->draw();
 	//trapezium->setZ(i);
 	//trapezium->setRotation(k);
-	trapezium->draw();
+	trapezium->draw();*/
 
 }
 

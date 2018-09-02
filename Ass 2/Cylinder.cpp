@@ -17,27 +17,30 @@
 #endif
 
 
-
+// initalise cylinder with zero dimensions
 CYL::Cylinder::Cylinder() :Shape() {
 	inner_radius = 0.0;
 	outer_radius = 0.0;
 	depth = 0.0;
 }
 
-
-CYL::Cylinder::Cylinder(double _x, double _y, double _z, double _inner_radius, double _outer_radius, double _depth) :Shape(_x, _y, _z) {
+// initialise cylinder with given dimensions and default rotation
+CYL::Cylinder::Cylinder(double _x, double _y, double _z, double _inner_radius, double _outer_radius, double _depth, double _red, double _green, double _blue) :Shape(_x, _y, _z) {
 	inner_radius = _inner_radius;
 	outer_radius = _outer_radius;
 	depth = _depth;
+	this->setColor(_red, _green, _blue);
 }
 
-
-CYL::Cylinder::Cylinder(double _x, double _y, double _z, double _inner_radius, double _outer_radius, double _depth, double _rotation) :Shape(_x, _y, _z, _rotation) {
+// initialise cylidner with given dimensions and rotation
+CYL::Cylinder::Cylinder(double _x, double _y, double _z, double _inner_radius, double _outer_radius, double _depth, double _red, double _green, double _blue, double _rotation) :Shape(_x, _y, _z, _rotation) {
 	inner_radius = _inner_radius;
 	outer_radius = _outer_radius;
 	depth = _depth;
+	this->setColor(_red, _green, _blue);
 }
 
+// setters for 2 radii and depth
 void CYL::Cylinder::setInnerRadius(double _inner_radius) {
 	this->inner_radius = _inner_radius;
 }
@@ -50,6 +53,7 @@ void CYL::Cylinder::setDepth(double _depth) {
 	this->depth = _depth;
 }
 
+// draws the shape
 void CYL::Cylinder::draw() {
 
 	GLUquadricObj *disk1; // One face of cylinder
@@ -63,6 +67,7 @@ void CYL::Cylinder::draw() {
 	inner_cylinder = gluNewQuadric();
 
 	glPushAttrib(GL_CURRENT_BIT);
+
 	// draw cylinder
 
 	this->setColorInGL();

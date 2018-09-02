@@ -19,6 +19,7 @@
 
 #define PI 3.14159265358979323846
 
+//initalise the rectangular prism with zero dimensions
 TPZ::Trapezoidal_Prism::Trapezoidal_Prism() :Shape() {
 	x_l = 0.0;
 	y_l = 0.0;
@@ -27,29 +28,53 @@ TPZ::Trapezoidal_Prism::Trapezoidal_Prism() :Shape() {
 	r_off = 0.0;
 }
 
-TPZ::Trapezoidal_Prism::Trapezoidal_Prism(double _x, double _y, double _z, double length_x, double length_y, double length_z, double left_offset, double right_offset) :Shape(_x, _y, _z) {
+//initalise the rectangular prism with given dimensions
+TPZ::Trapezoidal_Prism::Trapezoidal_Prism(double _x, double _y, double _z, double length_x, double length_y, double length_z, double left_offset, double right_offset, double _red, double _green, double _blue) :Shape(_x, _y, _z) {
 	x_l = length_x;
 	y_l = length_y;
 	z_l = length_z;
 	l_off = left_offset;
 	r_off = right_offset;
+	this->setColor(_red, _green, _blue);
 	updateVertices();
 }
 
-TPZ::Trapezoidal_Prism::Trapezoidal_Prism(double _x, double _y, double _z, double length_x, double length_y, double length_z, double left_offset, double right_offset, double _rotation) :Shape(_x, _y, _z, _rotation) {
+//intialise the rectangular prism with given dimensions and rotation
+TPZ::Trapezoidal_Prism::Trapezoidal_Prism(double _x, double _y, double _z, double length_x, double length_y, double length_z, double left_offset, double right_offset, double _red, double _green, double _blue, double _rotation) :Shape(_x, _y, _z, _rotation) {
 	x_l = length_x;
 	y_l = length_y;
 	z_l = length_z;
 	l_off = left_offset;
 	r_off = right_offset;
+	this->setColor(_red, _green, _blue);
 	updateVertices();
 }
 
+// setters for shape dimensions
+void TPZ::Trapezoidal_Prism::setXLength(double length_x) {
+	x_l = length_x;
+}
 
+void TPZ::Trapezoidal_Prism::setYLength(double length_y) {
+	y_l = length_y;
+}
 
+void TPZ::Trapezoidal_Prism::setZLength(double length_z) {
+	z_l = length_z;
+}
 
+void TPZ::Trapezoidal_Prism::setLeftOffset(double left_offset) {
+	l_off = left_offset;
+}
+
+void TPZ::Trapezoidal_Prism::setRightOffset(double right_offset) {
+	r_off = right_offset;
+}
+
+//maps the vertices array to store the locations of each vertex of the prism, as described below
 void TPZ::Trapezoidal_Prism::updateVertices() {
 	/*
+			This is the coordinates of the vertex on the trapezoidal prism
 			^	 ^Z
 			| Y /
 			|  /
@@ -64,6 +89,7 @@ void TPZ::Trapezoidal_Prism::updateVertices() {
 	 /				 \  /
 	1-----------------0
 */
+
 	vertices[0][0] = - (x_l / 2);
 	vertices[0][1] = 0;
 	vertices[0][2] = - (z_l / 2);
@@ -97,7 +123,7 @@ void TPZ::Trapezoidal_Prism::updateVertices() {
 	vertices[7][2] = (z_l / 2);
 }
 
-
+// draw function
 void TPZ::Trapezoidal_Prism::draw() {
 	updateVertices();
 	//saves the current orientation and perspective
@@ -141,6 +167,7 @@ void TPZ::Trapezoidal_Prism::draw() {
 	glVertex3f(vertices[6][0], vertices[6][1], vertices[6][2]);
 	glVertex3f(vertices[7][0], vertices[7][1], vertices[7][2]);
 	glEnd();
+
 	//restores the previous orientation and perspective
 	glPopMatrix();
 	//restores the previous attributes (specifically colour)

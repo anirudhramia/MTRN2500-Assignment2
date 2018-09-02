@@ -17,7 +17,7 @@
 #endif
 
 
-//initalise the rectangular prism with dimensions 0x0x0
+//initalise the rectangular prism with zero dimensions
 RCT::Rectangular_Prism::Rectangular_Prism():Shape() { 
 	x_l = 0.0;
 	y_l = 0.0;
@@ -25,18 +25,20 @@ RCT::Rectangular_Prism::Rectangular_Prism():Shape() {
 }
 
 //initalise the rectangular prism with given dimensions
-RCT::Rectangular_Prism::Rectangular_Prism(double _x, double _y, double _z, double length_x, double length_y, double length_z) :Shape(_x, _y, _z) {
+RCT::Rectangular_Prism::Rectangular_Prism(double _x, double _y, double _z, double length_x, double length_y, double length_z, double _red, double _green, double _blue) :Shape(_x, _y, _z) {
 	x_l = length_x;
 	y_l = length_y;
 	z_l = length_z;
+	this->setColor(_red, _green, _blue);
 	this->updateVertices(); //update the location of the vertices
 }
 
 //intialise the rectangular prism with given dimensions and rotation
-RCT::Rectangular_Prism::Rectangular_Prism(double _x, double _y, double _z, double length_x, double length_y, double length_z,double _rotation) :Shape(_x, _y, _z,_rotation) {
+RCT::Rectangular_Prism::Rectangular_Prism(double _x, double _y, double _z, double length_x, double length_y, double length_z, double _red, double _green, double _blue, double _rotation) :Shape(_x, _y, _z,_rotation) {
 	x_l = length_x;
 	y_l = length_y;
 	z_l = length_z;
+	this->setColor(_red, _green, _blue);
 	this->updateVertices(); //update the location of the vertices
 }
 

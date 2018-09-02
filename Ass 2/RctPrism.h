@@ -16,8 +16,8 @@ namespace RCT {
 	public:
 		//Constructors for: no dimensions given, dimensions given, dimensions and rotation given
 		Rectangular_Prism();
-		Rectangular_Prism(double _x, double _y, double _z, double length_x, double length_y, double length_z);
-		Rectangular_Prism(double _x, double _y, double _z, double length_x, double length_y, double length_z, double _rotation);
+		Rectangular_Prism(double _x, double _y, double _z, double length_x, double length_y, double length_z, double _red, double _green, double _blue);
+		Rectangular_Prism(double _x, double _y, double _z, double length_x, double length_y, double length_z, double _red, double _green, double _blue, double _rotation);
 
 		//Setters for x,y,z lengths
 		void setXLength(double length_x);
