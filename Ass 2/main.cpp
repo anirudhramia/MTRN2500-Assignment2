@@ -31,12 +31,14 @@
 #include "Ground.hpp"
 #include "KeyManager.hpp"
 
+
 #include "Shape.hpp"
 #include "Vehicle.hpp"
 #include "RctPrism.h"
 #include "Cylinder.h"
 #include "TriPrism.h"
 #include "TrapPrism.h"
+#include "MyVehicle.h"
 
 #include "RemoteDataManager.hpp"
 #include "Messages.hpp"
@@ -125,7 +127,7 @@ int main(int argc, char ** argv) {
 	//   custom vehicle.
 	// -------------------------------------------------------------------------
 
-	vehicle = new Vehicle();
+	vehicle = new MyVehicle();
 	/*
 	double x_test = 1.0;
 	double y_test = 0.0;
@@ -187,7 +189,7 @@ void drawGoals()
 
 		// make first goal purple
 		if (i == 0)
-			glColor3f(1, .3, 1);
+			glColor3f(1, .3, 1);	
 		else
 			glColor3f(1, 1, 1);
 
