@@ -67,16 +67,16 @@ int prev_mouse_x = -1;
 int prev_mouse_y = -1;
 
 // vehicle control related variables
-/*
+
 RCT::Rectangular_Prism * rectangle = NULL;
-RCT::Rectangular_Prism * rectangle2 = NULL;
+//RCT::Rectangular_Prism * rectangle2 = NULL;
 CYL::Cylinder * cylinder = NULL;
-CYL::Cylinder * cylinder2 = NULL;
-CYL::Cylinder * cylinder3 = NULL;
-CYL::Cylinder * cylinder4 = NULL;
+//CYL::Cylinder * cylinder2 = NULL;
+//CYL::Cylinder * cylinder3 = NULL;
+//CYL::Cylinder * cylinder4 = NULL;
 TRI::Triangular_Prism * triangle = NULL;
 TPZ::Trapezoidal_Prism * trapezium = NULL;
-TRI::Triangular_Prism * triangle2 = NULL;*/
+//TRI::Triangular_Prism * triangle2 = NULL;
 Vehicle * vehicle = NULL;
 double speed = 0;
 double steering = 0;
@@ -128,30 +128,30 @@ int main(int argc, char ** argv) {
 	// -------------------------------------------------------------------------
 
 	vehicle = new MyVehicle();
-	/*
-	double x_test = 1.0;
+	vehicle->setRotation(90);
+	/*double x_test = 1.0;
 	double y_test = 0.0;
-	double z_test = 5.0;
+	double z_test = 5.0;*/
 
-	rectangle = new RCT::Rectangular_Prism(x_test, y_test, z_test, 3, 1, 2);
-	rectangle2 = new RCT::Rectangular_Prism(x_test, y_test+1, z_test, 1, 1, 1);
-	rectangle->setColor(0.75, 0, 0);
-	rectangle2->setColor(0.75,0.25,0.25);
-	cylinder = new CYL::Cylinder(x_test+1, y_test-0.5, z_test, 0.3,0.5, 2.2, 0);
-	cylinder2 = new CYL::Cylinder(x_test+1, y_test-0.3, z_test, 0, 0.3, 2.1, 0);
-	cylinder3 = new CYL::Cylinder(x_test-1, y_test-0.5, z_test, 0.3, 0.5, 2.2, 0);
-	cylinder4 = new CYL::Cylinder(x_test-1, y_test-0.3, z_test, 0, 0.3, 2.1, 0);
-	cylinder->setColor(0.05, 0.05, 0.05);
-	cylinder2->setColor(0.75, 0.75, 0.75);
-	cylinder3->setColor(0.05, 0.05, 0.05);
-	cylinder4->setColor(0.75, 0.75, 0.75);
+	rectangle = new RCT::Rectangular_Prism(20, 0, 20, 3, 4, 5, 1, 0, 0);
+	//rectangle2 = new RCT::Rectangular_Prism(x_test, y_test+1, z_test, 1, 1, 1);
+	//rectangle->setColor(1, 0, 0);
+	//rectangle2->setColor(0.75,0.25,0.25);
+	cylinder = new CYL::Cylinder(20, 0, -20, 0,2, 10, 1,1,1, 90);
+	//cylinder2 = new CYL::Cylinder(x_test+1, y_test-0.3, z_test, 0, 0.3, 2.1, 0);
+	//cylinder3 = new CYL::Cylinder(x_test-1, y_test-0.5, z_test, 0.3, 0.5, 2.2, 0);
+	//cylinder4 = new CYL::Cylinder(x_test-1, y_test-0.3, z_test, 0, 0.3, 2.1, 0);
+	
+	//cylinder2->setColor(0.75, 0.75, 0.75);
+	//cylinder3->setColor(0.05, 0.05, 0.05);
+	//cylinder4->setColor(0.75, 0.75, 0.75);
 
-	triangle = new TRI::Triangular_Prism(x_test-1.25, y_test+1, z_test, 0.2, 0.4, 2, 120, 180);
-	triangle->setColor(1, 0.5, 0);
+	triangle = new TRI::Triangular_Prism(-20, 0, 20, 2, 4, 2, 60, 0,1,0, 45);
+	//triangle->setColor(1, 0.5, 0);
 	//triangle2 = new TRI::Triangular_Prism(0, 13, 10, 5, 6, 10, 60, -90);
 
-	trapezium = new TPZ::Trapezoidal_Prism(x_test+1, y_test+1, z_test, 0.5, 0.3, 0.5, 0.1, 0.01,90);
-	trapezium->setColor(0.5, 0.5, 0.5);*/
+	trapezium = new TPZ::Trapezoidal_Prism(-20, 0, -20, 5, 3, 5, 1, 1,0,0,1,0);
+	//trapezium->setColor(0.5, 0.5, 0.5);
 	
 
 
@@ -213,20 +213,23 @@ void testing() {
 	k = k + 5;
 	//rectangle->setX(i);
 	
-	rectangle->draw();
+	
 	rectangle2->draw();
 	//cylinder->setRotation(i);
-	cylinder->draw();
+	
 	//cylinder2->setRotation(i);
 	cylinder2->draw();
 	cylinder3->draw();
 	cylinder4->draw();
-	triangle->draw();
+	
 	//triangle2->draw();
 	//trapezium->setZ(i);
 	//trapezium->setRotation(k);
-	trapezium->draw();*/
-
+	*/
+	rectangle->draw();
+	cylinder->draw();
+	triangle->draw();
+	trapezium->draw();
 }
 
 void display() {
@@ -272,7 +275,7 @@ void display() {
 	// draw HUD
 	HUD::Draw();
 
-	//testing();
+	testing();
 
 	glutSwapBuffers();
 };
@@ -375,7 +378,7 @@ void idle() {
 				otherVehicles.clear();
 
 				// uncomment this line to connect to the robotics server.
-				//RemoteDataManager::Connect("www.robotics.unsw.edu.au","18081");
+				RemoteDataManager::Connect("www.robotics.unsw.edu.au","18081");
 
 				// on connect, let's tell the server what we look like
 				if (RemoteDataManager::IsConnected()) {
