@@ -173,6 +173,7 @@
     <ClCompile Include="TriPrism.cpp" />
     <ClCompile Include="VectorMaths.cpp" />
     <ClCompile Include="Vehicle.cpp" />
+    <ClCompile Include="Wheel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.hpp" />

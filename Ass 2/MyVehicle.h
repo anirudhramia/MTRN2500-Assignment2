@@ -8,6 +8,7 @@
 #include "TrapPrism.h"
 #include "TriPrism.h"
 #include "RctPrism.h"
+#include "Wheel.h"
 #include "VectorMaths.hpp"
 #include <vector>
 

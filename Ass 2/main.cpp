@@ -137,7 +137,7 @@ int main(int argc, char ** argv) {
 	//rectangle2 = new RCT::Rectangular_Prism(x_test, y_test+1, z_test, 1, 1, 1);
 	//rectangle->setColor(1, 0, 0);
 	//rectangle2->setColor(0.75,0.25,0.25);
-	cylinder = new CYL::Cylinder(20, 0, -20, 0,2, 10, 1,1,1, 90);
+	cylinder = new CYL::Cylinder(20, 0, -20, 2, 10, 1,1,1, 90);
 	//cylinder2 = new CYL::Cylinder(x_test+1, y_test-0.3, z_test, 0, 0.3, 2.1, 0);
 	//cylinder3 = new CYL::Cylinder(x_test-1, y_test-0.5, z_test, 0.3, 0.5, 2.2, 0);
 	//cylinder4 = new CYL::Cylinder(x_test-1, y_test-0.3, z_test, 0, 0.3, 2.1, 0);
