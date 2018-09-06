@@ -137,5 +137,8 @@
     <ClInclude Include="MyVehicle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="VhclToShp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
