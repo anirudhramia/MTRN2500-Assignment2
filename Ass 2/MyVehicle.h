@@ -19,6 +19,8 @@ public:
 	MyVehicle(VehicleModel vm);
 
 	void draw();
+protected:
+	VehicleModel Model;
 };
 
 #endif 

@@ -386,6 +386,7 @@ void idle() {
 
 					VehicleModel vm;
 					vm.remoteID = 0;
+					
 
 					//
 					// student code goes here

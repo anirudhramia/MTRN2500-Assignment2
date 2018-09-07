@@ -1,6 +1,7 @@
 #include "Wheel.h"
 #include "Cylinder.h"
 #include "Shape.hpp"
+#include <iostream>
 
 #ifdef __APPLE__
 #include <OpenGL/gl.h>
@@ -55,7 +56,7 @@ void CYL::Wheel::setIsSteering(double _isSteering) {
 
 // draws the shape
 void CYL::Wheel::draw() {
-
+	std::cout << this->getY() << std::endl;
 	GLUquadricObj *disk1; // One face of cylinder
 	GLUquadricObj *disk2; // Second face of cylinder
 	GLUquadricObj *cylinder; // Body of cylinder

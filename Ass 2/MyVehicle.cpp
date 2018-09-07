@@ -17,7 +17,7 @@
 
 MyVehicle::MyVehicle():Vehicle(){
 	// initialise shapes to add onto car 
-	
+	this->setY(0.25);
 	RCT::Rectangular_Prism * mid_body = new RCT::Rectangular_Prism(x, y + 0.5, z, 3.25, 0.5, 2, 0.75, 0, 0, rotation);
 	RCT::Rectangular_Prism * bot_body = new RCT::Rectangular_Prism(x, y - 0.25, z, 3.25, 1, 1.45, 0.75, 0, 0, rotation);
 	RCT::Rectangular_Prism * side_body = new RCT::Rectangular_Prism(x, y - 0.25, z, 1, 1, 2, 0.75, 0, 0, rotation);
@@ -74,7 +74,7 @@ MyVehicle::MyVehicle(VehicleModel vm){
 			break;
 		}
 
-
+		this->Model = vm;
 
 		//RCT::Rectangular_Prism * mid_body = new RCT::Rectangular_Prism(x, y + 0.5, z, 3.25, 0.5, 2, 0.75, 0, 0, rotation);
 		//RCT::Rectangular_Prism * bot_body = new RCT::Rectangular_Prism(x, y - 0.25, z, 3.25, 1, 1.45, 0.75, 0, 0, rotation);

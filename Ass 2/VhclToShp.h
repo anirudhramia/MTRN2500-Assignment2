@@ -4,10 +4,7 @@
 #include "Messages.hpp"
 #include "MyVehicle.h"
 
-MyVehicle convert(VehicleModel vm);
-
-
-
+VehicleModel defaultModel();
 
 
 #endif
