@@ -47,6 +47,22 @@ MyVehicle::MyVehicle():Vehicle(){
 
 }
 
+MyVehicle::MyVehicle(VehicleModel vm){
+	for (int i = 0; i = vm.shapes.size(); i++) {
+		switch (vm.shapes[i].type)
+		{
+		case RECTANGULAR_PRISM:
+			addShape(new RCT::Rectangular_Prism(vm.shapes[i].xyz[0], vm.shapes[i].xyz[1], vm.shapes[i].xyz[2], vm.shapes[i].params.rect.xlen, vm.shapes[i].params.rect.ylen, vm.shapes[i].params.rect.zlen, vm.shapes[i].rgb[0], vm.shapes[i].rgb[1], vm.shapes[i].rgb[2], vm.shapes[i].rotation)); 
+			break;
+		case TRIANGULAR_PRISM:
+			addShape(new TRI::Triangular_Prism(vm.shapes[i].xyz[0], vm.shapes[i].xyz[1], vm.shapes[i].xyz[2], vm.shapes[i].params.tri.alen, vm.shapes[i].params.tri.blen, vm.shapes[i].params.tri.depth, vm.shapes[i].params.tri.angle, vm.shapes[i].rgb[0], vm.shapes[i].rgb[1], vm.shapes[i].rgb[2], vm.shapes[i].rotation));
+			break;
+		default:
+			break;
+		}
+	}
+}
+
 void MyVehicle::draw(){
 	glPushMatrix();
 	shapes[4]->setRotation(steering);

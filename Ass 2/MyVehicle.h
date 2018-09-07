@@ -10,11 +10,13 @@
 #include "RctPrism.h"
 #include "Wheel.h"
 #include "VectorMaths.hpp"
+#include "Messages.hpp"
 #include <vector>
 
 class MyVehicle : public Vehicle {
 public:
 	MyVehicle();
+	MyVehicle(VehicleModel vm);
 
 	void draw();
 };
