@@ -57,6 +57,18 @@ MyVehicle::MyVehicle(VehicleModel vm){
 		case TRIANGULAR_PRISM:
 			addShape(new TRI::Triangular_Prism(vm.shapes[i].xyz[0], vm.shapes[i].xyz[1], vm.shapes[i].xyz[2], vm.shapes[i].params.tri.alen, vm.shapes[i].params.tri.blen, vm.shapes[i].params.tri.depth, vm.shapes[i].params.tri.angle, vm.shapes[i].rgb[0], vm.shapes[i].rgb[1], vm.shapes[i].rgb[2], vm.shapes[i].rotation));
 			break;
+		case TRAPEZOIDAL_PRISM:
+			addShape(new TPZ::Trapezoidal_Prism(vm.shapes[i].xyz[0], vm.shapes[i].xyz[1], vm.shapes[i].xyz[2], vm.shapes[i].params.trap.alen, vm.shapes[i].params.trap.height, vm.shapes[i].params.trap.depth, vm.shapes[i].params.trap.aoff, (vm.shapes[i].params.trap.alen - vm.shapes[i].params.trap.blen - vm.shapes[i].params.trap.aoff), vm.shapes[i].rgb[0], vm.shapes[i].rgb[1], vm.shapes[i].rgb[2], vm.shapes[i].rotation));
+			break;
+		case CYLINDER:
+			if (!vm.shapes[i].params.cyl.isRolling) {
+				addShape(new CYL::Cylinder(vm.shapes[i].xyz[0], vm.shapes[i].xyz[1], vm.shapes[i].xyz[2], vm.shapes[i].params.cyl.radius, vm.shapes[i].params.cyl.depth, vm.shapes[i].rgb[1], vm.shapes[i].rgb[2], vm.shapes[i].rotation));
+			}
+			else {
+				addShape(new CYL::Wheel(vm.shapes[i].xyz[0], vm.shapes[i].xyz[1], vm.shapes[i].xyz[2], 0.4*(vm.shapes[i].params.cyl.radius), vm.shapes[i].params.cyl.radius, vm.shapes[i].params.cyl.depth, vm.shapes[i].rgb[0], vm.shapes[i].rgb[1], vm.shapes[i].rgb[2], vm.shapes[i].params.cyl.isRolling, vm.shapes[i].params.cyl.isSteering));
+			}
+			break;
+			
 		default:
 			break;
 		}
