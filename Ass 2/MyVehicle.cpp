@@ -103,18 +103,6 @@ MyVehicle::MyVehicle(VehicleModel vm){
 		//addShape(spoiler);
 		//addShape(engine);
 
-
-
-
-
-
-
-
-
-
-
-
-
 	}
 }
 
@@ -122,6 +110,7 @@ void MyVehicle::draw(){
 	glPushMatrix();
 	shapes[4]->setRotation(steering);
 	shapes[5]->setRotation(steering);
+
 	this->positionInGL();
 	for (int i = 0; i < shapes.size(); i++) {
 		shapes[i]->draw();

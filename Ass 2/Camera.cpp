@@ -41,7 +41,7 @@ Camera::Camera() {
   
   horizontal_rotation_speed = -0.005;
   vertical_rotation_speed = -0.002;
-  movement_speed = 0.25;
+  movement_speed = 1;
 
   near_clipping_plane = 1.0f;
   far_clipping_plane = 3500.0f;

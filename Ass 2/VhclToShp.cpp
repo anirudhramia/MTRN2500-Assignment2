@@ -47,12 +47,6 @@ VehicleModel defaultModel()
 
 	//Engine
 	
-
-
-
-
-
-
 	return vmBase;
 
 
