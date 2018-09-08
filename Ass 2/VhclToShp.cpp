@@ -54,9 +54,9 @@ VehicleModel defaultModel()
 	ShapeStruct.params.trap.depth = 0.5;
 	ShapeStruct.params.trap.aoff = 0.1;
 	ShapeStruct.params.trap.blen = 0.3;
-	ShapeStruct.rgb[0] = 0.05;
-	ShapeStruct.rgb[1] = 0.05;
-	ShapeStruct.rgb[2] = 0.05;
+	ShapeStruct.rgb[0] = 0.5;
+	ShapeStruct.rgb[1] = 0.5;
+	ShapeStruct.rgb[2] = 0.5;
 	ShapeStruct.rotation = 90;
 	vmBase.shapes.push_back(ShapeStruct);
 
@@ -69,6 +69,9 @@ VehicleModel defaultModel()
 	ShapeStruct.params.cyl.depth = 0.4;
 	ShapeStruct.params.cyl.isRolling = 1;
 	ShapeStruct.params.cyl.isSteering = 1;
+	ShapeStruct.rgb[0] = 0.05;
+	ShapeStruct.rgb[1] = 0.05;
+	ShapeStruct.rgb[2] = 0.05;
 	vmBase.shapes.push_back(ShapeStruct);
 
 	//Front right Wheel

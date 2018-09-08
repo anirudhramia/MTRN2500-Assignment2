@@ -388,7 +388,7 @@ void idle() {
 				if (RemoteDataManager::IsConnected()) {
 					ObstacleManager::get()->removeAll();
 
-					VehicleModel vm;
+					VehicleModel vm = defaultModel();
 					vm.remoteID = 0;
 					
 
