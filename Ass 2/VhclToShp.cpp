@@ -5,17 +5,17 @@
 VehicleModel defaultModel()
 {
 	int x = 0;
-	int y = 0.25;
+	int y = static_cast<int>(0.25);
 	int z = 0;
 	VehicleModel vmBase;
 	vmBase.remoteID = 0;
 	ShapeInit ShapeStruct;
 	//Mid body
-	ShapeStruct.xyz[0] = x;
-	ShapeStruct.xyz[1] = y+0.5;
-	ShapeStruct.xyz[2] = z;
+	ShapeStruct.xyz[0] = static_cast<float>(x);
+	ShapeStruct.xyz[1] = static_cast<float>(y+0.5);
+	ShapeStruct.xyz[2] = static_cast<float>(z);
 	ShapeStruct.type = RECTANGULAR_PRISM;
-	ShapeStruct.params.rect = { 3.25,0.5,2 };
+	ShapeStruct.params.rect = { static_cast<float>(3.25), static_cast<float>(0.5), 2 };
 	ShapeStruct.rgb[0] = 0.75;
 	ShapeStruct.rgb[1] = 0;
 	ShapeStruct.rgb[2] = 0;
@@ -23,8 +23,8 @@ VehicleModel defaultModel()
 	vmBase.shapes.push_back(ShapeStruct);
 
 	//Bot Body
-	ShapeStruct.xyz[1] = y-0.25;
-	ShapeStruct.params.rect = { 3.25, 1, 1.45 };
+	ShapeStruct.xyz[1] = static_cast<float>(y-0.25);
+	ShapeStruct.params.rect = { static_cast<float>(3.25), 1, static_cast<float>(1.45) };
 	vmBase.shapes.push_back(ShapeStruct);
 
 	//Side Body
@@ -33,13 +33,13 @@ VehicleModel defaultModel()
 
 	//Top Body
 	ShapeStruct.type = TRAPEZOIDAL_PRISM;
-	ShapeStruct.xyz[0] = x - 0.25;
-	ShapeStruct.xyz[1] = y + 1;
+	ShapeStruct.xyz[0] = static_cast<float>(x - 0.25);
+	ShapeStruct.xyz[1] = static_cast<float>(y + 1);
 	ShapeStruct.params.trap.alen = 1.5;
 	ShapeStruct.params.trap.height = 0.75;
 	ShapeStruct.params.trap.depth = 2;
-	ShapeStruct.params.trap.aoff = 0.4;
-	ShapeStruct.params.trap.blen = 1.05;
+	ShapeStruct.params.trap.aoff = static_cast<float>(0.4);
+	ShapeStruct.params.trap.blen = static_cast<float>(1.05);
 	ShapeStruct.rgb[0] = 0;
 	ShapeStruct.rgb[1] = 0.5;
 	ShapeStruct.rgb[2] = 0.75;
