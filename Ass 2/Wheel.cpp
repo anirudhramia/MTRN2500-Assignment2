@@ -69,23 +69,15 @@ void CYL::Wheel::draw() {
 	GLUquadricObj *cylinder; // Body of cylinder
 	GLUquadricObj *inner_cylinder; // inner body of cylinder, for hollow cylinders
 
-	float x_p = x;
-	float y_p = y + outer_radius;
-	float z_p = z;
-
-	GLUquadricObj *disk3; // One face of visualiser cylinder
-	GLUquadricObj *disk4; // One face of visualiser cylinder
-	GLUquadricObj *v_cylinder; // visualiser cylinder
-
+	float y_p = inner_radius + outer_radius;
+	float y_p2 = outer_radius - inner_radius;
 
 	disk1 = gluNewQuadric();
 	disk2 = gluNewQuadric();
 	cylinder = gluNewQuadric();
 	inner_cylinder = gluNewQuadric();
 
-	disk3 = gluNewQuadric();
-	disk4 = gluNewQuadric();
-	v_cylinder = gluNewQuadric();
+	
 
 	glPushAttrib(GL_CURRENT_BIT);
 	int timeElapsed = glutGet(GLUT_ELAPSED_TIME);
@@ -125,21 +117,24 @@ void CYL::Wheel::draw() {
 
 	// draw rolling visualiser
 
-	glColor3f(red + 0.5, green, blue);
-
+	glColor3f(1-red, 1-green, 1-blue);
+	float angle = speed / outer_radius;
 	glPushMatrix();
-	glTranslatef(0, v_val, -((depth+0.05)/ 2));
-	gluCylinder(v_cylinder, v_val, v_val, depth+0.05, 25, 1);
-	glPopMatrix();
+	glBegin(GL_QUADS);
+	glRotatef(angle, 0, 0, 1);
+	glVertex3f(0,y_p, (depth/2)+0.01); 
+	glVertex3f(0,y_p+y_p2, (depth / 2) + 0.01);
+	glVertex3f(0.03,y_p+y_p2, (depth / 2) + 0.01);
+	glVertex3f(0.03, y_p, (depth / 2) + 0.01);
+	glEnd();
 
-	glPushMatrix();
-	glTranslatef(0, v_val, -((depth + 0.05) / 2));
-	gluDisk(disk3, 0, v_val, 25, 1);
-	glPopMatrix();
-
-	glPushMatrix();
-	glTranslatef(0, v_val, ((depth + 0.05) / 2));
-	gluDisk(disk4, 0, v_val , 25, 1);
+	glBegin(GL_QUADS);
+	glRotatef(angle, 0, 0, 1);
+	glVertex3f(0, y_p, -(depth / 2) - 0.01);
+	glVertex3f(0, y_p + y_p2, -(depth / 2) - 0.01);
+	glVertex3f(0.03, y_p + y_p2, -(depth / 2) - 0.01);
+	glVertex3f(0.03, y_p, -(depth / 2) - 0.01);
+	glEnd();
 	glPopMatrix();
 
 	glPopMatrix();
