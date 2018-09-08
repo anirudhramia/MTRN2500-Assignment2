@@ -109,7 +109,7 @@ MyVehicle::MyVehicle(VehicleModel vm){
 void MyVehicle::draw(){
 	glPushMatrix();
 
-
+	//std::cout << this->Model.remoteID << ": " << shapes.size() << " || ";
 	this->positionInGL();
 	for (int i = 0; i < shapes.size(); i++) {
 		if (this != NULL && this->Model.shapes.size() != 0 &&  this->Model.shapes[i].type == CYLINDER && this->Model.shapes[i].params.cyl.isSteering) {

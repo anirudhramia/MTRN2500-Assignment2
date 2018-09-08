@@ -12,6 +12,7 @@ VehicleModel defaultModel()
 	VehicleModel vmBase;
 	vmBase.remoteID = 0;
 	ShapeInit ShapeStruct;
+
 	//Mid body
 	ShapeStruct.xyz[0] = static_cast<float>(x);
 	ShapeStruct.xyz[1] = static_cast<float>(y+0.5);
