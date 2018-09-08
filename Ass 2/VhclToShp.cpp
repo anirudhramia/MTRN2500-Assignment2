@@ -1,15 +1,32 @@
+
+
 #include "VhclToShp.h"
 
 
 
 VehicleModel defaultModel()
 {
-	int x = 0;
-	int y = static_cast<int>(0.25);
-	int z = 0;
+	float x = 0;
+	float y = static_cast<float>(0.25);
+	float z = 0;
 	VehicleModel vmBase;
 	vmBase.remoteID = 0;
 	ShapeInit ShapeStruct;
+	//Spoiler
+	ShapeStruct.type = TRIANGULAR_PRISM;
+	ShapeStruct.xyz[0] = x - 1.25;
+	ShapeStruct.xyz[1] = y + 1;
+	ShapeStruct.xyz[2] = z;
+	ShapeStruct.params.tri.alen = 0.2;
+	ShapeStruct.params.tri.blen = 0.4;
+	ShapeStruct.params.tri.depth = 2;
+	ShapeStruct.params.tri.angle = 120;
+	ShapeStruct.rgb[0] = 1;
+	ShapeStruct.rgb[1] = 0.5;
+	ShapeStruct.rgb[2] = 0;
+	ShapeStruct.rotation = 90;
+	vmBase.shapes.push_back(ShapeStruct);
+
 	//Mid body
 	ShapeStruct.xyz[0] = static_cast<float>(x);
 	ShapeStruct.xyz[1] = static_cast<float>(y+0.5);
@@ -46,7 +63,49 @@ VehicleModel defaultModel()
 	vmBase.shapes.push_back(ShapeStruct);
 
 	//Engine
-	
+	ShapeStruct.xyz[0] = x + 1;
+	ShapeStruct.params.trap.alen = 0.5;
+	ShapeStruct.params.trap.height = 0.3;
+	ShapeStruct.params.trap.depth = 0.5;
+	ShapeStruct.params.trap.aoff = 0.1;
+	ShapeStruct.params.trap.blen = 0.3;
+	ShapeStruct.rgb[0] = 0.5;
+	ShapeStruct.rgb[1] = 0.5;
+	ShapeStruct.rgb[2] = 0.5;
+	ShapeStruct.rotation = 90;
+	vmBase.shapes.push_back(ShapeStruct);
+
+	//Front left wheel	
+	ShapeStruct.type = CYLINDER;
+	ShapeStruct.xyz[0] = x + 1;
+	ShapeStruct.xyz[1] = y - 0.5;
+	ShapeStruct.xyz[2] = z - 1;
+	ShapeStruct.params.cyl.radius = 0.5;
+	ShapeStruct.params.cyl.depth = 0.4;
+	ShapeStruct.params.cyl.isRolling = 1;
+	ShapeStruct.params.cyl.isSteering = 1;
+	ShapeStruct.rgb[0] = 0.05;
+	ShapeStruct.rgb[1] = 0.05;
+	ShapeStruct.rgb[2] = 0.05;
+	vmBase.shapes.push_back(ShapeStruct);
+
+	//Front right Wheel
+	ShapeStruct.xyz[2] = z + 1;
+	vmBase.shapes.push_back(ShapeStruct);
+
+	//Back left wheel
+	ShapeStruct.xyz[0] = x - 1;
+	ShapeStruct.xyz[2] = z - 1;
+	ShapeStruct.params.cyl.isSteering = 0;
+	ShapeStruct.params.cyl.depth = 0.5;
+	vmBase.shapes.push_back(ShapeStruct);
+
+	//Back right wheel
+	ShapeStruct.xyz[2] = z + 1;
+	vmBase.shapes.push_back(ShapeStruct);
+
+
+
 	return vmBase;
 
 
