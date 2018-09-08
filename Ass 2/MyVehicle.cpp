@@ -1,4 +1,5 @@
 #include "MyVehicle.h"
+
 #ifdef __APPLE__
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
@@ -110,6 +111,8 @@ void MyVehicle::draw(){
 	glPushMatrix();
 	shapes[4]->setRotation(steering);
 	shapes[5]->setRotation(steering);
+	static_cast<CYL::Wheel*> (shapes[4])->setSpeed(speed);
+	static_cast<CYL::Wheel*> (shapes[5])->setSpeed(speed);
 
 	this->positionInGL();
 	for (int i = 0; i < shapes.size(); i++) {

@@ -11,6 +11,7 @@ namespace CYL {
 		bool isRolling;
 		bool isSteering;
 		double inner_radius;
+		double speed;
 
 	public:
 		Wheel();
@@ -20,6 +21,7 @@ namespace CYL {
 		void setInnerRadius(double _inner_radius);
 		void setIsRolling(double _isRolling);
 		void setIsSteering(double _isSteering);
+		void setSpeed(double _speed);
 
 		void draw();
 	};
