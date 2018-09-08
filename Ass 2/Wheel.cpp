@@ -56,7 +56,7 @@ void CYL::Wheel::setIsSteering(double _isSteering) {
 
 // draws the shape
 void CYL::Wheel::draw() {
-	std::cout << this->getY() << std::endl;
+	//std::cout << this->getY() << std::endl;
 	GLUquadricObj *disk1; // One face of cylinder
 	GLUquadricObj *disk2; // Second face of cylinder
 	GLUquadricObj *cylinder; // Body of cylinder

@@ -66,7 +66,7 @@ MyVehicle::MyVehicle(VehicleModel vm){
 				addShape(new CYL::Cylinder(vm.shapes[i].xyz[0], vm.shapes[i].xyz[1], vm.shapes[i].xyz[2], vm.shapes[i].params.cyl.radius, vm.shapes[i].params.cyl.depth, vm.shapes[i].rgb[0], vm.shapes[i].rgb[1], vm.shapes[i].rgb[2], vm.shapes[i].rotation));
 			}
 			else {
-				addShape(new CYL::Wheel(vm.shapes[i].xyz[0], vm.shapes[i].xyz[1], vm.shapes[i].xyz[2], 0.4*(vm.shapes[i].params.cyl.radius), vm.shapes[i].params.cyl.radius, vm.shapes[i].params.cyl.depth, vm.shapes[i].rgb[0], vm.shapes[i].rgb[1], vm.shapes[i].rgb[2], vm.shapes[i].params.cyl.isRolling, vm.shapes[i].params.cyl.isSteering));
+				addShape(new CYL::Wheel(vm.shapes[i].xyz[0], vm.shapes[i].xyz[1], vm.shapes[i].xyz[2], 0, vm.shapes[i].params.cyl.radius, vm.shapes[i].params.cyl.depth, vm.shapes[i].rgb[0], vm.shapes[i].rgb[1], vm.shapes[i].rgb[2], vm.shapes[i].params.cyl.isRolling, vm.shapes[i].params.cyl.isSteering));
 			}
 			break;
 			
@@ -108,11 +108,13 @@ MyVehicle::MyVehicle(VehicleModel vm){
 
 void MyVehicle::draw(){
 	glPushMatrix();
-	shapes[4]->setRotation(steering);
-	shapes[5]->setRotation(steering);
+
 
 	this->positionInGL();
 	for (int i = 0; i < shapes.size(); i++) {
+		if (this != NULL && this->Model.shapes.size() != 0 &&  this->Model.shapes[i].type == CYLINDER && this->Model.shapes[i].params.cyl.isSteering) {
+			shapes[i]->setRotation(steering);
+		}
 		shapes[i]->draw();
 	}
 	glPopMatrix();

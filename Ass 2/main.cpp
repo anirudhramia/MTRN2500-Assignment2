@@ -39,6 +39,7 @@
 #include "TriPrism.h"
 #include "TrapPrism.h"
 #include "MyVehicle.h"
+#include "VhclToShp.h"
 
 #include "RemoteDataManager.hpp"
 #include "Messages.hpp"
@@ -127,7 +128,10 @@ int main(int argc, char ** argv) {
 	//   custom vehicle.
 	// -------------------------------------------------------------------------
 
-	vehicle = new MyVehicle();
+	VehicleModel basicModel = defaultModel();
+
+
+	vehicle = new MyVehicle(basicModel);
 	vehicle->setRotation(90);
 	/*double x_test = 1.0;
 	double y_test = 0.0;
