@@ -389,7 +389,7 @@ void idle() {
 					ObstacleManager::get()->removeAll();
 
 					VehicleModel vm = defaultModel();
-					vm.remoteID = 13;
+					vm.remoteID = 0;
 					
 
 					//

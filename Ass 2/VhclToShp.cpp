@@ -99,7 +99,7 @@ VehicleModel defaultModel()
 	ShapeStruct.params.tri.alen = 0.2;
 	ShapeStruct.params.tri.blen = 0.4;
 	ShapeStruct.params.tri.depth = 2;
-	ShapeStruct.params.tri.angle = 120;
+	ShapeStruct.params.tri.angle = 90;
 	ShapeStruct.rgb[0] = 1;
 	ShapeStruct.rgb[1] = 0.5;
 	ShapeStruct.rgb[2] = 0;
