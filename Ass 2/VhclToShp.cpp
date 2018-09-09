@@ -12,20 +12,7 @@ VehicleModel defaultModel()
 	VehicleModel vmBase;
 	vmBase.remoteID = 0;
 	ShapeInit ShapeStruct;
-	//Spoiler
-	ShapeStruct.type = TRIANGULAR_PRISM;
-	ShapeStruct.xyz[0] = x - 1.25;
-	ShapeStruct.xyz[1] = y + 1;
-	ShapeStruct.xyz[2] = z;
-	ShapeStruct.params.tri.alen = 0.2;
-	ShapeStruct.params.tri.blen = 0.4;
-	ShapeStruct.params.tri.depth = 2;
-	ShapeStruct.params.tri.angle = 120;
-	ShapeStruct.rgb[0] = 1;
-	ShapeStruct.rgb[1] = 0.5;
-	ShapeStruct.rgb[2] = 0;
-	ShapeStruct.rotation = 180;
-	vmBase.shapes.push_back(ShapeStruct);
+
 
 	//Mid body
 	ShapeStruct.xyz[0] = static_cast<float>(x);
@@ -104,7 +91,20 @@ VehicleModel defaultModel()
 	ShapeStruct.xyz[2] = z + 1;
 	vmBase.shapes.push_back(ShapeStruct);
 
-
+	//Spoiler
+	ShapeStruct.type = TRIANGULAR_PRISM;
+	ShapeStruct.xyz[0] = x - 1.25;
+	ShapeStruct.xyz[1] = y + 1;
+	ShapeStruct.xyz[2] = z;
+	ShapeStruct.params.tri.alen = 0.2;
+	ShapeStruct.params.tri.blen = 0.4;
+	ShapeStruct.params.tri.depth = 2;
+	ShapeStruct.params.tri.angle = 120;
+	ShapeStruct.rgb[0] = 1;
+	ShapeStruct.rgb[1] = 0.5;
+	ShapeStruct.rgb[2] = 0;
+	ShapeStruct.rotation = 180;
+	vmBase.shapes.push_back(ShapeStruct);
 
 	return vmBase;
 
