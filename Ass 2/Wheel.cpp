@@ -134,7 +134,6 @@ void CYL::Wheel::draw() {
 		angle = angle + 360;
 	}
 
-	std::cout << "angle: " << angle << "    " << x << "  " << z << std::endl;
 	glTranslated(0, outer_radius, 0);
 	glRotated(-angle, 0, 0, 1);
 	glBegin(GL_QUADS);
