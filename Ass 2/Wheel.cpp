@@ -120,16 +120,23 @@ void CYL::Wheel::draw() {
 	// draw spoke
 
 	glColor3f(1-red, 1-green, 1-blue);
-	
+
 	delta_angle = (this->speed)/ outer_radius;
 
 	glPushMatrix();
 	
 	angle = angle+delta_angle;
 	
+	if (angle > 360) {
+		angle = angle - 360;
+	}
+	else if (angle < -360) {
+		angle = angle + 360;
+	}
+
 	std::cout << "angle: " << angle << "    " << x << "  " << z << std::endl;
 	glTranslated(0, outer_radius, 0);
-/*	glRotated(-angle, 0, 0, 1);
+	glRotated(-angle, 0, 0, 1);
 	glBegin(GL_QUADS);
 	glVertex3f(0,0, (depth/2)+0.01); 
 	glVertex3f(0,y_p, (depth / 2) + 0.01);
@@ -143,25 +150,6 @@ void CYL::Wheel::draw() {
 	glVertex3f(0.03, y_p, -(depth / 2) - 0.01);
 	glVertex3f(0.03, 0, -(depth / 2) - 0.01);
 	glEnd();
-	*/
-	glPushMatrix();
-	glRotated(180, 0, 0, 1);
-	glRotated(-angle, 0, 0, 1);
-	glBegin(GL_QUADS);
-	glVertex3f(0, 0, (depth / 2) + 0.01);
-	glVertex3f(0, y_p, (depth / 2) + 0.01);
-	glVertex3f(0.03, y_p, (depth / 2) + 0.01);
-	glVertex3f(0.03, y_p, (depth / 2) + 0.01);
-	glEnd();
-
-
-	glBegin(GL_QUADS);
-	glVertex3f(0, 0, -(depth / 2) - 0.01);
-	glVertex3f(0, y_p, -(depth / 2) - 0.01);
-	glVertex3f(0.03, y_p, -(depth / 2) - 0.01);
-	glVertex3f(0.03, 0, -(depth / 2) - 0.01);
-	glEnd();
-	glPopMatrix();
 
 	glPopMatrix();
 
