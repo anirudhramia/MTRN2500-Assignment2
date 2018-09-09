@@ -12,6 +12,7 @@ namespace CYL {
 		bool isSteering;
 		double inner_radius;
 		double speed;
+		double angle;
 
 	public:
 		Wheel();

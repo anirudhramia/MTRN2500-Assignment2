@@ -29,7 +29,7 @@ MyVehicle::MyVehicle():Vehicle(){
 	CYL::Wheel * back_left_tyre = new CYL::Wheel(x - 1, y - 0.5, z - 1, 0.2, 0.5, 0.5, 0.05, 0.05, 0.05, rotation, 1,1);
 	CYL::Wheel * back_right_tyre = new CYL::Wheel(x - 1, y - 0.5, z + 1, 0.2, 0.5, 0.5, 0.05, 0.05, 0.05, rotation, 1, 1);
 	CYL::Cylinder * back_axle = new CYL::Cylinder(x - 1, y - 0.2, z, 0.2, 2.1, 0.75, 0.75, 0.75, rotation);
-	TRI::Triangular_Prism * spoiler = new TRI::Triangular_Prism(x - 1.25, y + 1, z, 0.2, 0.4, 2, 120, 1, 0.5, 0, rotation + 180);
+	TRI::Triangular_Prism * spoiler = new TRI::Triangular_Prism(x - 1.25, y + 1, z, 0.2, 0.4, 2, 120, 1, 0.5, 0, rotation+90);
 	TPZ::Trapezoidal_Prism * engine = new TPZ::Trapezoidal_Prism(x + 1, y + 1, z, 0.5, 0.3, 0.5, 0.1, 0.1, 0.5, 0.5, 0.5, rotation + 90);
 
 	// add shapes onto shape array for drawing
@@ -110,16 +110,15 @@ MyVehicle::MyVehicle(VehicleModel vm){
 void MyVehicle::draw(){
 	glPushMatrix();
 
-	shapes[4]->setRotation(steering);
-	shapes[5]->setRotation(steering);
-	static_cast<CYL::Wheel*> (shapes[4])->setSpeed(speed);
-	static_cast<CYL::Wheel*> (shapes[5])->setSpeed(speed);
-
 	//std::cout << this->Model.remoteID << ": " << shapes.size() << " || ";
 	this->positionInGL();
+	this->setY(0.25);
 	for (int i = 0; i < shapes.size(); i++) {
 		if (this != NULL && this->Model.shapes.size() != 0 &&  this->Model.shapes[i].type == CYLINDER && this->Model.shapes[i].params.cyl.isSteering) {
 			shapes[i]->setRotation(steering);
+		}
+		if (this != NULL && this->Model.shapes.size() != 0 && this->Model.shapes[i].type == CYLINDER && this->Model.shapes[i].params.cyl.isRolling) {
+			static_cast<CYL::Wheel*>(shapes[i])->setSpeed(speed);
 		}
 		shapes[i]->draw();
 	}

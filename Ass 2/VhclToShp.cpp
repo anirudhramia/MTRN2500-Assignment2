@@ -24,7 +24,7 @@ VehicleModel defaultModel()
 	ShapeStruct.rgb[0] = 1;
 	ShapeStruct.rgb[1] = 0.5;
 	ShapeStruct.rgb[2] = 0;
-	ShapeStruct.rotation = 90;
+	ShapeStruct.rotation = 180;
 	vmBase.shapes.push_back(ShapeStruct);
 
 	//Mid body

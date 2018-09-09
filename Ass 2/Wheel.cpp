@@ -18,6 +18,8 @@
 #include <GL/glut.h>
 #endif
 
+#define PI 3.14159265358979323846
+
 
 // initalise cylinder with zero dimensions
 CYL::Wheel::Wheel() :Cylinder() {
@@ -25,6 +27,7 @@ CYL::Wheel::Wheel() :Cylinder() {
 	isRolling = 0;
 	isSteering = 0;
 	speed = 0.0;
+	angle = 0.0;
 }
 
 // initialise cylinder with given dimensions and default rotation
@@ -33,6 +36,7 @@ CYL::Wheel::Wheel(double _x, double _y, double _z, double _inner_radius, double 
 	isRolling = _isRolling;
 	isSteering = _isSteering;
 	speed = 0.0;
+	angle = 0.0;
 }
 
 // initialise cylidner with given dimensions and rotation
@@ -41,6 +45,7 @@ CYL::Wheel::Wheel(double _x, double _y, double _z, double _inner_radius, double 
 	isRolling = _isRolling;
 	isSteering = _isSteering;
 	speed = 0.0;
+	angle = 0.0;
 }
 
 // setters for radius and motion states
@@ -70,7 +75,7 @@ void CYL::Wheel::draw() {
 	GLUquadricObj *inner_cylinder; // inner body of cylinder, for hollow cylinders
 
 	float y_p = inner_radius + outer_radius;
-	float y_p2 = outer_radius - inner_radius;
+	float delta_angle = 0;
 
 	disk1 = gluNewQuadric();
 	disk2 = gluNewQuadric();
@@ -80,9 +85,6 @@ void CYL::Wheel::draw() {
 	
 
 	glPushAttrib(GL_CURRENT_BIT);
-	int timeElapsed = glutGet(GLUT_ELAPSED_TIME);
-
-	float v_val = (outer_radius - inner_radius) / 3.5;
 
 	// draw cylinder
 
@@ -115,26 +117,52 @@ void CYL::Wheel::draw() {
 	gluDisk(disk2, inner_radius, outer_radius, 25, 1);
 	glPopMatrix();
 
-	// draw rolling visualiser
+	// draw spoke
 
 	glColor3f(1-red, 1-green, 1-blue);
-	float angle = speed / outer_radius;
+	
+	delta_angle = (this->speed)/ outer_radius;
+
 	glPushMatrix();
+	
+	angle = angle+delta_angle;
+	
+	std::cout << "angle: " << angle << "    " << x << "  " << z << std::endl;
+	glTranslated(0, outer_radius, 0);
+/*	glRotated(-angle, 0, 0, 1);
 	glBegin(GL_QUADS);
-	glRotatef(angle, 0, 0, 1);
-	glVertex3f(0,y_p, (depth/2)+0.01); 
-	glVertex3f(0,y_p+y_p2, (depth / 2) + 0.01);
-	glVertex3f(0.03,y_p+y_p2, (depth / 2) + 0.01);
+	glVertex3f(0,0, (depth/2)+0.01); 
+	glVertex3f(0,y_p, (depth / 2) + 0.01);
+	glVertex3f(0.03,y_p, (depth / 2) + 0.01);
 	glVertex3f(0.03, y_p, (depth / 2) + 0.01);
 	glEnd();
 
 	glBegin(GL_QUADS);
-	glRotatef(angle, 0, 0, 1);
+	glVertex3f(0,0, -(depth / 2) - 0.01);
 	glVertex3f(0, y_p, -(depth / 2) - 0.01);
-	glVertex3f(0, y_p + y_p2, -(depth / 2) - 0.01);
-	glVertex3f(0.03, y_p + y_p2, -(depth / 2) - 0.01);
 	glVertex3f(0.03, y_p, -(depth / 2) - 0.01);
+	glVertex3f(0.03, 0, -(depth / 2) - 0.01);
 	glEnd();
+	*/
+	glPushMatrix();
+	glRotated(180, 0, 0, 1);
+	glRotated(-angle, 0, 0, 1);
+	glBegin(GL_QUADS);
+	glVertex3f(0, 0, (depth / 2) + 0.01);
+	glVertex3f(0, y_p, (depth / 2) + 0.01);
+	glVertex3f(0.03, y_p, (depth / 2) + 0.01);
+	glVertex3f(0.03, y_p, (depth / 2) + 0.01);
+	glEnd();
+
+
+	glBegin(GL_QUADS);
+	glVertex3f(0, 0, -(depth / 2) - 0.01);
+	glVertex3f(0, y_p, -(depth / 2) - 0.01);
+	glVertex3f(0.03, y_p, -(depth / 2) - 0.01);
+	glVertex3f(0.03, 0, -(depth / 2) - 0.01);
+	glEnd();
+	glPopMatrix();
+
 	glPopMatrix();
 
 	glPopMatrix();
