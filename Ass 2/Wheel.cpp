@@ -120,7 +120,7 @@ void CYL::Wheel::draw() {
 	// draw spoke
 
 	glColor3f(1-red, 1-green, 1-blue);
-	
+
 	delta_angle = (this->speed)/ outer_radius;
 
 	glPushMatrix();
@@ -150,25 +150,6 @@ void CYL::Wheel::draw() {
 	glVertex3f(0.03, y_p, -(depth / 2) - 0.01);
 	glVertex3f(0.03, 0, -(depth / 2) - 0.01);
 	glEnd();
-	/*
-	glPushMatrix();
-	glRotated(180, 0, 0, 1);
-	glRotated(-angle, 0, 0, 1);
-	glBegin(GL_QUADS);
-	glVertex3f(0, 0, (depth / 2) + 0.01);
-	glVertex3f(0, y_p, (depth / 2) + 0.01);
-	glVertex3f(0.03, y_p, (depth / 2) + 0.01);
-	glVertex3f(0.03, y_p, (depth / 2) + 0.01);
-	glEnd();
-
-
-	glBegin(GL_QUADS);
-	glVertex3f(0, 0, -(depth / 2) - 0.01);
-	glVertex3f(0, y_p, -(depth / 2) - 0.01);
-	glVertex3f(0.03, y_p, -(depth / 2) - 0.01);
-	glVertex3f(0.03, 0, -(depth / 2) - 0.01);
-	glEnd();
-	glPopMatrix();*/
 
 	glPopMatrix();
 
