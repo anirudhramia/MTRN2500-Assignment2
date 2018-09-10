@@ -28,6 +28,7 @@ CYL::Wheel::Wheel() :Cylinder() {
 	isSteering = 0;
 	speed = 0.0;
 	angle = 0.0;
+	startTime = 0.0;
 }
 
 // initialise cylinder with given dimensions and default rotation
@@ -37,6 +38,7 @@ CYL::Wheel::Wheel(double _x, double _y, double _z, double _inner_radius, double 
 	isSteering = _isSteering;
 	speed = 0.0;
 	angle = 0.0;
+	startTime = 0;
 }
 
 // initialise cylidner with given dimensions and rotation
@@ -46,6 +48,7 @@ CYL::Wheel::Wheel(double _x, double _y, double _z, double _inner_radius, double 
 	isSteering = _isSteering;
 	speed = 0.0;
 	angle = 0.0;
+	startTime = 0;
 }
 
 // setters for radius and motion states
@@ -124,10 +127,14 @@ void CYL::Wheel::draw() {
 	glPopMatrix();
 
 
+	float timeElapsed = glutGet(GLUT_ELAPSED_TIME);
+	float deltaTime = timeElapsed - startTime;
+	startTime = timeElapsed;
+
 	// draw spokes
 
 	glColor3f(1-red, 1-green, 1-blue);
-	delta_angle = (this->speed)/ outer_radius;
+	delta_angle = ((this->speed)/ outer_radius)*(deltaTime/1000);
 	
 	//
 	glPushMatrix();

@@ -13,6 +13,7 @@ namespace CYL {
 		double inner_radius;
 		double speed;
 		double angle;
+		float startTime;
 
 	public:
 		Wheel();
