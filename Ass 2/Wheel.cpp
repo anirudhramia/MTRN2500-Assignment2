@@ -74,13 +74,19 @@ void CYL::Wheel::draw() {
 	GLUquadricObj *cylinder; // Body of cylinder
 	GLUquadricObj *inner_cylinder; // inner body of cylinder, for hollow cylinders
 
-	float y_p = inner_radius + outer_radius;
+	GLUquadricObj *disk3;
+	GLUquadricObj *disk4;
+
+	float y_p = ((inner_radius + outer_radius)/3)*2;
 	float delta_angle = 0;
 
 	disk1 = gluNewQuadric();
 	disk2 = gluNewQuadric();
 	cylinder = gluNewQuadric();
 	inner_cylinder = gluNewQuadric();
+
+	disk3 = gluNewQuadric();
+	disk4 = gluNewQuadric();
 
 	
 
@@ -117,7 +123,8 @@ void CYL::Wheel::draw() {
 	gluDisk(disk2, inner_radius, outer_radius, 25, 1);
 	glPopMatrix();
 
-	// draw spoke
+
+	// draw spokes
 
 	glColor3f(1-red, 1-green, 1-blue);
 	delta_angle = (this->speed)/ outer_radius;
@@ -137,7 +144,7 @@ void CYL::Wheel::draw() {
 	glVertex3f(0,0, (depth/2)+0.01); 
 	glVertex3f(0,y_p, (depth / 2) + 0.01);
 	glVertex3f(0.03,y_p, (depth / 2) + 0.01);
-	glVertex3f(0.03, y_p, (depth / 2) + 0.01);
+	glVertex3f(0.03, 0, (depth / 2) + 0.01);
 	glEnd();
 
 	glBegin(GL_QUADS);
@@ -146,9 +153,106 @@ void CYL::Wheel::draw() {
 	glVertex3f(0.03, y_p, -(depth / 2) - 0.01);
 	glVertex3f(0.03, 0, -(depth / 2) - 0.01);
 	glEnd();
-	
 	glPopMatrix();
 	//
+
+	//
+	glPushMatrix();
+	angle = angle + delta_angle;
+	if (angle > 360) {
+		angle = angle - 360;
+	}
+	else if (angle < -360) {
+		angle = angle + 360;
+	}
+
+	glTranslated(0, outer_radius, 0);
+	glRotated(180, 0, 0, 1);
+	glRotated(-angle, 0, 0, 1);
+	glBegin(GL_QUADS);
+	glVertex3f(0, 0, (depth / 2) + 0.01);
+	glVertex3f(0, y_p, (depth / 2) + 0.01);
+	glVertex3f(-0.03, y_p, (depth / 2) + 0.01);
+	glVertex3f(-0.03, 0, (depth / 2) + 0.01);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3f(0, 0, -(depth / 2) - 0.01);
+	glVertex3f(0, y_p, -(depth / 2) - 0.01);
+	glVertex3f(-0.03, y_p, -(depth / 2) - 0.01);
+	glVertex3f(-0.03, 0, -(depth / 2) - 0.01);
+	glEnd();
+	glPopMatrix();
+	//
+
+	//
+	glPushMatrix();
+	angle = angle + delta_angle;
+	if (angle > 360) {
+		angle = angle - 360;
+	}
+	else if (angle < -360) {
+		angle = angle + 360;
+	}
+
+	glTranslated(0, outer_radius, 0);
+	glRotated(90, 0, 0, 1);
+	glRotated(-angle, 0, 0, 1);
+	glBegin(GL_QUADS);
+	glVertex3f(0, 0, (depth / 2) + 0.01);
+	glVertex3f(0, y_p, (depth / 2) + 0.01);
+	glVertex3f(0.03, y_p, (depth / 2) + 0.01);
+	glVertex3f(0.03, 0, (depth / 2) + 0.01);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3f(0, 0, -(depth / 2) - 0.01);
+	glVertex3f(0, y_p, -(depth / 2) - 0.01);
+	glVertex3f(0.03, y_p, -(depth / 2) - 0.01);
+	glVertex3f(0.03, 0, -(depth / 2) - 0.01);
+	glEnd();
+	glPopMatrix();
+	//
+
+	//
+	glPushMatrix();
+	angle = angle + delta_angle;
+	if (angle > 360) {
+		angle = angle - 360;
+	}
+	else if (angle < -360) {
+		angle = angle + 360;
+	}
+
+	glTranslated(0, outer_radius, 0);
+	glRotated(-90, 0, 0, 1);
+	glRotated(-angle, 0, 0, 1);
+	glBegin(GL_QUADS);
+	glVertex3f(0, 0, (depth / 2) + 0.01);
+	glVertex3f(0, y_p, (depth / 2) + 0.01);
+	glVertex3f(-0.03, y_p, (depth / 2) + 0.01);
+	glVertex3f(-0.03, 0, (depth / 2) + 0.01);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3f(0, 0, -(depth / 2) - 0.01);
+	glVertex3f(0, y_p, -(depth / 2) - 0.01);
+	glVertex3f(-0.03, y_p, -(depth / 2) - 0.01);
+	glVertex3f(-0.03, 0, -(depth / 2) - 0.01);
+	glEnd();
+	glPopMatrix();
+	//
+
+	glPushMatrix();
+	glTranslatef(0, outer_radius, -(depth / 2)-0.01);
+	gluDisk(disk3, y_p, y_p+0.03, 25, 1);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(0, outer_radius, (depth / 2)+0.01);
+	gluDisk(disk4, y_p, y_p+0.03, 25, 1);
+	glPopMatrix();
+
 
 	glPopMatrix();
 
