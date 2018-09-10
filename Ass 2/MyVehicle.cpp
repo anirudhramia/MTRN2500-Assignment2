@@ -49,25 +49,26 @@ MyVehicle::MyVehicle():Vehicle(){
 }
 
 MyVehicle::MyVehicle(VehicleModel vm){
-	for (int i = 0; i < vm.shapes.size(); i++) {
+	std::vector<ShapeInit>::iterator it;
+	for (it = vm.shapes.begin(); it != vm.shapes.end(); it++) {
 	
-		switch (vm.shapes[i].type)
+		switch (it->type)
 		{
 		case RECTANGULAR_PRISM:
-			addShape(new RCT::Rectangular_Prism(vm.shapes[i].xyz[0], vm.shapes[i].xyz[1], vm.shapes[i].xyz[2], vm.shapes[i].params.rect.xlen, vm.shapes[i].params.rect.ylen, vm.shapes[i].params.rect.zlen, vm.shapes[i].rgb[0], vm.shapes[i].rgb[1], vm.shapes[i].rgb[2], vm.shapes[i].rotation)); 
+			addShape(new RCT::Rectangular_Prism(it->xyz[0], it->xyz[1], it->xyz[2], it->params.rect.xlen, it->params.rect.ylen, it->params.rect.zlen, it->rgb[0], it->rgb[1], it->rgb[2], it->rotation)); 
 			break;
 		case TRIANGULAR_PRISM:
-			addShape(new TRI::Triangular_Prism(vm.shapes[i].xyz[0], vm.shapes[i].xyz[1], vm.shapes[i].xyz[2], vm.shapes[i].params.tri.alen, vm.shapes[i].params.tri.blen, vm.shapes[i].params.tri.depth, vm.shapes[i].params.tri.angle, vm.shapes[i].rgb[0], vm.shapes[i].rgb[1], vm.shapes[i].rgb[2], vm.shapes[i].rotation));
+			addShape(new TRI::Triangular_Prism(it->xyz[0], it->xyz[1], it->xyz[2], it->params.tri.alen, it->params.tri.blen, it->params.tri.depth, it->params.tri.angle, it->rgb[0], it->rgb[1], it->rgb[2], it->rotation));
 			break;
 		case TRAPEZOIDAL_PRISM:
-			addShape(new TPZ::Trapezoidal_Prism(vm.shapes[i].xyz[0], vm.shapes[i].xyz[1], vm.shapes[i].xyz[2], vm.shapes[i].params.trap.alen, vm.shapes[i].params.trap.height, vm.shapes[i].params.trap.depth, vm.shapes[i].params.trap.aoff, (vm.shapes[i].params.trap.alen - vm.shapes[i].params.trap.blen - vm.shapes[i].params.trap.aoff), vm.shapes[i].rgb[0], vm.shapes[i].rgb[1], vm.shapes[i].rgb[2], vm.shapes[i].rotation));
+			addShape(new TPZ::Trapezoidal_Prism(it->xyz[0], it->xyz[1], it->xyz[2], it->params.trap.alen, it->params.trap.height, it->params.trap.depth, it->params.trap.aoff, (it->params.trap.alen - it->params.trap.blen - it->params.trap.aoff), it->rgb[0], it->rgb[1], it->rgb[2], it->rotation));
 			break;
 		case CYLINDER:
-			if (!vm.shapes[i].params.cyl.isRolling) {
-				addShape(new CYL::Cylinder(vm.shapes[i].xyz[0], vm.shapes[i].xyz[1], vm.shapes[i].xyz[2], vm.shapes[i].params.cyl.radius, vm.shapes[i].params.cyl.depth, vm.shapes[i].rgb[0], vm.shapes[i].rgb[1], vm.shapes[i].rgb[2], vm.shapes[i].rotation));
+			if (!it->params.cyl.isRolling) {
+				addShape(new CYL::Cylinder(it->xyz[0], it->xyz[1], it->xyz[2], it->params.cyl.radius, it->params.cyl.depth, it->rgb[0], it->rgb[1], it->rgb[2], it->rotation));
 			}
 			else {
-				addShape(new CYL::Wheel(vm.shapes[i].xyz[0], vm.shapes[i].xyz[1], vm.shapes[i].xyz[2], 0, vm.shapes[i].params.cyl.radius, vm.shapes[i].params.cyl.depth, vm.shapes[i].rgb[0], vm.shapes[i].rgb[1], vm.shapes[i].rgb[2], vm.shapes[i].params.cyl.isRolling, vm.shapes[i].params.cyl.isSteering));
+				addShape(new CYL::Wheel(it->xyz[0], it->xyz[1], it->xyz[2], 0, it->params.cyl.radius, it->params.cyl.depth, it->rgb[0], it->rgb[1], it->rgb[2], it->params.cyl.isRolling, it->params.cyl.isSteering));
 			}
 			break;
 			
@@ -114,7 +115,7 @@ void MyVehicle::draw(){
 	this->positionInGL();
 	this->setY(0.25);
 	for (int i = 0; i < shapes.size(); i++) {
-		if (this != NULL && this->Model.shapes.size() != 0 &&  this->Model.shapes[i].type == CYLINDER && this->Model.shapes[i].params.cyl.isSteering) {
+		if (this != NULL && this->Model.shapes.size() != 0 && this->Model.shapes[i].type == CYLINDER && this->Model.shapes[i].params.cyl.isSteering) {
 			shapes[i]->setRotation(steering);
 		}
 		if (this != NULL && this->Model.shapes.size() != 0 && this->Model.shapes[i].type == CYLINDER && this->Model.shapes[i].params.cyl.isRolling) {
