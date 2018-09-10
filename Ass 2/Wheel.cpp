@@ -134,7 +134,7 @@ void CYL::Wheel::draw() {
 	// draw spokes
 
 	glColor3f(1-red, 1-green, 1-blue);
-	delta_angle = (((this->speed)/ outer_radius)*(180/PI))*(deltaTime/1000);
+	delta_angle = ((this->speed)*(deltaTime/1000))*360/(2*PI*outer_radius) ;
 	
 	//
 	glPushMatrix();
