@@ -47,6 +47,7 @@ VehicleModel defaultModel()
 	ShapeStruct.rgb[0] = 0;
 	ShapeStruct.rgb[1] = 0.5;
 	ShapeStruct.rgb[2] = 0.75;
+	ShapeStruct.rotation = 180;
 	vmBase.shapes.push_back(ShapeStruct);
 
 	//Engine
@@ -59,7 +60,7 @@ VehicleModel defaultModel()
 	ShapeStruct.rgb[0] = 0.5;
 	ShapeStruct.rgb[1] = 0.5;
 	ShapeStruct.rgb[2] = 0.5;
-	ShapeStruct.rotation = 90;
+	ShapeStruct.rotation = 0;
 	vmBase.shapes.push_back(ShapeStruct);
 
 	//Front left wheel	
@@ -99,7 +100,7 @@ VehicleModel defaultModel()
 	ShapeStruct.params.tri.alen = 0.2;
 	ShapeStruct.params.tri.blen = 0.4;
 	ShapeStruct.params.tri.depth = 2;
-	ShapeStruct.params.tri.angle = 90;
+	ShapeStruct.params.tri.angle = 30;
 	ShapeStruct.rgb[0] = 1;
 	ShapeStruct.rgb[1] = 0.5;
 	ShapeStruct.rgb[2] = 0;

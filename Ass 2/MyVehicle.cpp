@@ -58,10 +58,10 @@ MyVehicle::MyVehicle(VehicleModel vm){
 			addShape(new RCT::Rectangular_Prism(it->xyz[0], it->xyz[1], it->xyz[2], it->params.rect.xlen, it->params.rect.ylen, it->params.rect.zlen, it->rgb[0], it->rgb[1], it->rgb[2], it->rotation)); 
 			break;
 		case TRIANGULAR_PRISM:
-			addShape(new TRI::Triangular_Prism(it->xyz[0], it->xyz[1], it->xyz[2], it->params.tri.alen, it->params.tri.blen, it->params.tri.depth, it->params.tri.angle, it->rgb[0], it->rgb[1], it->rgb[2], it->rotation));
+			addShape(new TRI::Triangular_Prism(it->xyz[0], it->xyz[1], it->xyz[2], it->params.tri.alen, it->params.tri.blen, it->params.tri.depth, it->params.tri.angle, it->rgb[0], it->rgb[1], it->rgb[2], it->rotation+180));
 			break;
 		case TRAPEZOIDAL_PRISM:
-			addShape(new TPZ::Trapezoidal_Prism(it->xyz[0], it->xyz[1], it->xyz[2], it->params.trap.alen, it->params.trap.height, it->params.trap.depth, it->params.trap.aoff, (it->params.trap.alen - it->params.trap.blen - it->params.trap.aoff), it->rgb[0], it->rgb[1], it->rgb[2], it->rotation));
+			addShape(new TPZ::Trapezoidal_Prism(it->xyz[0], it->xyz[1], it->xyz[2], it->params.trap.alen, it->params.trap.height, it->params.trap.depth, it->params.trap.aoff, (it->params.trap.alen - it->params.trap.blen - it->params.trap.aoff), it->rgb[0], it->rgb[1], it->rgb[2], it->rotation+180));
 			break;
 		case CYLINDER:
 			if (!it->params.cyl.isRolling) {
