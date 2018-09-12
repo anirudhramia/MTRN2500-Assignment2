@@ -10,7 +10,7 @@ VehicleModel defaultModel()
 	float y = static_cast<float>(0.25);
 	float z = 0;
 	VehicleModel vmBase;
-	vmBase.remoteID = 0;
+	vmBase.remoteID = 21;
 	ShapeInit ShapeStruct;
 
 
@@ -47,9 +47,11 @@ VehicleModel defaultModel()
 	ShapeStruct.rgb[0] = 0;
 	ShapeStruct.rgb[1] = 0.5;
 	ShapeStruct.rgb[2] = 0.75;
+	ShapeStruct.rotation = 180;
 	vmBase.shapes.push_back(ShapeStruct);
 
 	//Engine
+	ShapeStruct.rotation = 0;
 	ShapeStruct.xyz[0] = x + 1;
 	ShapeStruct.params.trap.alen = 0.5;
 	ShapeStruct.params.trap.height = 0.3;
@@ -59,10 +61,10 @@ VehicleModel defaultModel()
 	ShapeStruct.rgb[0] = 0.5;
 	ShapeStruct.rgb[1] = 0.5;
 	ShapeStruct.rgb[2] = 0.5;
-	ShapeStruct.rotation = 90;
 	vmBase.shapes.push_back(ShapeStruct);
 
 	//Front left wheel	
+	ShapeStruct.rotation = 0;
 	ShapeStruct.type = CYLINDER;
 	ShapeStruct.xyz[0] = x + 1;
 	ShapeStruct.xyz[1] = y - 0.5;
@@ -103,7 +105,7 @@ VehicleModel defaultModel()
 	ShapeStruct.rgb[0] = 1;
 	ShapeStruct.rgb[1] = 0.5;
 	ShapeStruct.rgb[2] = 0;
-	ShapeStruct.rotation = 180;
+	//ShapeStruct.rotation = 180;
 	vmBase.shapes.push_back(ShapeStruct);
 
 	return vmBase;

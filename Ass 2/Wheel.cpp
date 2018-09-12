@@ -134,8 +134,9 @@ void CYL::Wheel::draw() {
 	// draw spokes
 
 	glColor3f(1-red, 1-green, 1-blue);
-	delta_angle = ((this->speed)*(deltaTime/(2*PI*1000)))*360/(2*PI*outer_radius) ;
-	
+	/*delta_angle = ((this->speed)*(deltaTime/(/*2*PI*1000)))*360/(2*PI*outer_radius);*/
+	delta_angle = (this->speed / (outer_radius*deltaTime))*(180 / PI);
+
 	//
 	glPushMatrix();
 	angle = angle+delta_angle;
@@ -151,18 +152,18 @@ void CYL::Wheel::draw() {
 	glVertex3f(0,0, (depth/2)+0.01); 
 	glVertex3f(0,y_p, (depth / 2) + 0.01);
 	glVertex3f(0.03,y_p, (depth / 2) + 0.01);
-	glVertex3f(0.03, 0, (depth / 2) + 0.01);
+	glVertex3f(0.03, y_p, (depth / 2) + 0.01);
 	glEnd();
 
 	glBegin(GL_QUADS);
 	glVertex3f(0,0, -(depth / 2) - 0.01);
 	glVertex3f(0, y_p, -(depth / 2) - 0.01);
 	glVertex3f(0.03, y_p, -(depth / 2) - 0.01);
-	glVertex3f(0.03, 0, -(depth / 2) - 0.01);
+	glVertex3f(0.03, y_p, -(depth / 2) - 0.01);
 	glEnd();
 	glPopMatrix();
 	//
-
+	/*
 	//
 	glPushMatrix();
 	angle = angle + delta_angle;
@@ -191,7 +192,7 @@ void CYL::Wheel::draw() {
 	glEnd();
 	glPopMatrix();
 	//
-
+	
 	//
 	glPushMatrix();
 	angle = angle + delta_angle;
@@ -259,7 +260,7 @@ void CYL::Wheel::draw() {
 	glTranslatef(0, outer_radius, (depth / 2)+0.01);
 	gluDisk(disk4, y_p, y_p+0.03, 25, 1);
 	glPopMatrix();
-
+	*/
 
 	glPopMatrix();
 

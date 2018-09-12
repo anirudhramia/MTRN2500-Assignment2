@@ -383,6 +383,7 @@ void idle() {
 
 				// uncomment this line to connect to the robotics server.
 				RemoteDataManager::Connect("www.robotics.unsw.edu.au","18081");
+					/*www.robotics.unsw.edu.au*/
 
 				// on connect, let's tell the server what we look like
 				if (RemoteDataManager::IsConnected()) {
@@ -416,7 +417,7 @@ void idle() {
 		// if we're still connected, receive and handle response messages from the server
 		if (RemoteDataManager::IsConnected()) {
 			std::vector<RemoteMessage> msgs = RemoteDataManager::Read();
-			for(unsigned int i = 0; i < msgs.size(); i++ ) {
+			for(unsigned int i = 0; i < msgs.size(); ++i ) {
 
 				RemoteMessage msg = msgs[i];
 				//cout << msg.payload << endl;
