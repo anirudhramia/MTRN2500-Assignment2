@@ -76,7 +76,7 @@ namespace GamePad {
 	  //Coordinate LeftCoord;
 	  //Coordinate RightCoord;
 
-	  SHORT modulatePosition(SHORT coordinate);
+	  Coordinate modulatePosition(short xIn, short yIn);
 
 
 	  

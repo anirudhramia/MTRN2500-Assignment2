@@ -41,6 +41,9 @@
 #include "MyVehicle.h"
 #include "VhclToShp.h"
 
+#include "XboxController.h"
+#include "XInputWrapper.h"
+
 #include "RemoteDataManager.hpp"
 #include "Messages.hpp"
 #include "HUD.hpp"
@@ -81,6 +84,10 @@ TPZ::Trapezoidal_Prism * trapezium = NULL;
 Vehicle * vehicle = NULL;
 double speed = 0;
 double steering = 0;
+
+
+XInputWrapper xinput;
+GamePad::XBoxController controller(&xinput, 0);
 
 // default goal location
 std::deque<GoalState> goals;
@@ -352,21 +359,24 @@ void idle() {
 	speed = 0;
 	steering = 0;
 
-	if (KeyManager::get()->isSpecialKeyPressed(GLUT_KEY_LEFT)) {
+
+
+	if (controller.PressedLeftDpad()) {
 		steering = Vehicle::MAX_LEFT_STEERING_DEGS * -1;   
 	}
 
-	if (KeyManager::get()->isSpecialKeyPressed(GLUT_KEY_RIGHT)) {
+	if (controller.PressedRightDpad()) {
 		steering = Vehicle::MAX_RIGHT_STEERING_DEGS * -1;
 	}
 
-	if (KeyManager::get()->isSpecialKeyPressed(GLUT_KEY_UP)) {
+	if (controller.PressedUpDpad()) {
 		speed = Vehicle::MAX_FORWARD_SPEED_MPS;
 	}
 
-	if (KeyManager::get()->isSpecialKeyPressed(GLUT_KEY_DOWN)) {
+	if (controller.PressedDownDpad()) {
 		speed = Vehicle::MAX_BACKWARD_SPEED_MPS;
 	}
+ 
 
 	// attempt to do data communications every 4 frames if we've created a local vehicle
 	if(frameCounter % 4 == 0 && vehicle != NULL) {
