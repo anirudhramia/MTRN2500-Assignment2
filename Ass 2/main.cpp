@@ -388,7 +388,7 @@ void idle() {
 				// erase other vehicles
 				for(std::map<int, Vehicle*>::iterator iter = otherVehicles.begin(); iter  != otherVehicles.end(); ++iter) {
 					delete iter->second;
-				}
+				} 
 				otherVehicles.clear();
 
 				// uncomment this line to connect to the robotics server.
