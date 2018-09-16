@@ -73,14 +73,9 @@ int prev_mouse_y = -1;
 // vehicle control related variables
 
 RCT::Rectangular_Prism * rectangle = NULL;
-//RCT::Rectangular_Prism * rectangle2 = NULL;
 CYL::Cylinder * cylinder = NULL;
-//CYL::Cylinder * cylinder2 = NULL;
-//CYL::Cylinder * cylinder3 = NULL;
-//CYL::Cylinder * cylinder4 = NULL;
 TRI::Triangular_Prism * triangle = NULL;
 TPZ::Trapezoidal_Prism * trapezium = NULL;
-//TRI::Triangular_Prism * triangle2 = NULL;
 Vehicle * vehicle = NULL;
 double speed = 0;
 double steering = 0;
@@ -140,29 +135,12 @@ int main(int argc, char ** argv) {
 
 	vehicle = new MyVehicle(basicModel);
 	vehicle->setRotation(90);
-	/*double x_test = 1.0;
-	double y_test = 0.0;
-	double z_test = 5.0;*/
 
 	rectangle = new RCT::Rectangular_Prism(20, 0, 20, 3, 4, 5, 1, 0, 0);
-	//rectangle2 = new RCT::Rectangular_Prism(x_test, y_test+1, z_test, 1, 1, 1);
-	//rectangle->setColor(1, 0, 0);
-	//rectangle2->setColor(0.75,0.25,0.25);
 	cylinder = new CYL::Cylinder(20, 0, -20, 2, 10, 1,1,1, 90);
-	//cylinder2 = new CYL::Cylinder(x_test+1, y_test-0.3, z_test, 0, 0.3, 2.1, 0);
-	//cylinder3 = new CYL::Cylinder(x_test-1, y_test-0.5, z_test, 0.3, 0.5, 2.2, 0);
-	//cylinder4 = new CYL::Cylinder(x_test-1, y_test-0.3, z_test, 0, 0.3, 2.1, 0);
-	
-	//cylinder2->setColor(0.75, 0.75, 0.75);
-	//cylinder3->setColor(0.05, 0.05, 0.05);
-	//cylinder4->setColor(0.75, 0.75, 0.75);
-
 	triangle = new TRI::Triangular_Prism(-20, 0, 20, 2, 4, 2, 60, 0,1,0, 45);
-	//triangle->setColor(1, 0.5, 0);
-	//triangle2 = new TRI::Triangular_Prism(0, 13, 10, 5, 6, 10, 60, -90);
-
 	trapezium = new TPZ::Trapezoidal_Prism(-20, 0, -20, 5, 3, 5, 1, 1,0,0,1,0);
-	//trapezium->setColor(0.5, 0.5, 0.5);
+
 	
 
 
@@ -210,33 +188,7 @@ void drawGoals()
 }
 
 void testing() {
-	
-	/*if (i > 30) {
-		j = -1;
-	}
-		
-	if (i < -30) {
-		j = 1;
-	}
-	std::cout << i << j << std::endl;
-	i = i + j;
 
-	k = k + 5;
-	//rectangle->setX(i);
-	
-	
-	rectangle2->draw();
-	//cylinder->setRotation(i);
-	
-	//cylinder2->setRotation(i);
-	cylinder2->draw();
-	cylinder3->draw();
-	cylinder4->draw();
-	
-	//triangle2->draw();
-	//trapezium->setZ(i);
-	//trapezium->setRotation(k);
-	*/
 	rectangle->draw();
 	cylinder->draw();
 	triangle->draw();
@@ -359,7 +311,7 @@ void idle() {
 	speed = 0;
 	steering = 0;
 
-
+	// code for XBOX controller input
 
 	if (controller.PressedLeftDpad()) {
 		steering = Vehicle::MAX_LEFT_STEERING_DEGS * -1;   
