@@ -82,50 +82,6 @@ void RCT::Rectangular_Prism::updateVertices() {
 	* represents the x,y,z of the centrepoint shape
 */
 
-
-/*	These are the coordinates of each vertex
-	vertices[0] = { x - (x_l / 2), y - (y_l / 2), z };
-	vertices[1] = { x + (x_l / 2), y - (y_l / 2), z };
-	vertices[2] = { x + (x_l / 2), y + (y_l / 2), z };
-	vertices[3] = { x - (x_l / 2), y + (y_l / 2), z };
-	vertices[4] = { x - (x_l / 2), y - (y_l / 2), z +z_l };
-	vertices[5] = { x + (x_l / 2), y - (y_l / 2), z + z_l };
-	vertices[6] = { x + (x_l / 2), y + (y_l / 2), z + z_l };
-	vertices[7] = { x - (x_l / 2), y + (y_l / 2), z + z_l };*/	
-
-
-	/*vertices[0][0] = x - (x_l / 2);
-	vertices[0][1] = y;
-	vertices[0][2] = z - (z_l/2);
-	
-	vertices[1][0] = x + (x_l / 2);
-	vertices[1][1] = y;
-	vertices[1][2] = z - (z_l / 2);
-	
-	vertices[2][0] = x + (x_l / 2);
-	vertices[2][1] = y;
-	vertices[2][2] = z + (z_l / 2);
-	
-	vertices[3][0] = x - (x_l / 2);
-	vertices[3][1] = y;
-	vertices[3][2] = z + (z_l / 2);
-	
-	vertices[4][0] = x - (x_l / 2);
-	vertices[4][1] = y + y_l;
-	vertices[4][2] = z - (z_l / 2);
-	
-	vertices[5][0] = x + (x_l / 2);
-	vertices[5][1] = y + y_l;
-	vertices[5][2] = z - (z_l / 2);
-	
-	vertices[6][0] = x + (x_l / 2);
-	vertices[6][1] = y + y_l;
-	vertices[6][2] = z + (z_l / 2);
-	
-	vertices[7][0] = x - (x_l / 2);
-	vertices[7][1] = y + y_l;
-	vertices[7][2] = z + (z_l / 2);*/
-
 	vertices[0][0] = - (x_l / 2);
 	vertices[0][1] = 0;
 	vertices[0][2] = - (z_l / 2);

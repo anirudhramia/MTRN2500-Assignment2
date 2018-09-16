@@ -49,9 +49,11 @@ MyVehicle::MyVehicle():Vehicle(){
 }
 
 MyVehicle::MyVehicle(VehicleModel vm){
+	// make an iterator to go through the vector
 	std::vector<ShapeInit>::iterator it;
 	for (it = vm.shapes.begin(); it != vm.shapes.end(); it++) {
 	
+		// for each shape type in the vehicle model, add a shape from local shape classes
 		switch (it->type)
 		{
 		case RECTANGULAR_PRISM:
@@ -76,6 +78,7 @@ MyVehicle::MyVehicle(VehicleModel vm){
 			break;
 		}
 
+		// set this vehicle model variable to vm for draw
 		this->Model = vm;
 
 	}
@@ -83,14 +86,15 @@ MyVehicle::MyVehicle(VehicleModel vm){
 
 void MyVehicle::draw(){
 	glPushMatrix();
-
-	//std::cout << this->Model.remoteID << ": " << shapes.size() << " || ";
+	// draws shape
 	this->positionInGL();
 	this->setY(0.25);
 	for (int i = 0; i < shapes.size(); i++) {
+		// checks if wheel should steer, and updates wheel rotation
 		if (this != NULL && this->Model.shapes.size() != 0 && this->Model.shapes[i].type == CYLINDER && this->Model.shapes[i].params.cyl.isSteering) {
 			shapes[i]->setRotation(steering);
 		}
+		// checks if wheel should roll, and updates current speed
 		if (this != NULL && this->Model.shapes.size() != 0 && this->Model.shapes[i].type == CYLINDER && this->Model.shapes[i].params.cyl.isRolling) {
 			static_cast<CYL::Wheel*>(shapes[i])->setSpeed(speed);
 		}
